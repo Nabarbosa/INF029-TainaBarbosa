@@ -13,7 +13,7 @@
 //  Nome: Tainá Barbosa Teixeira
 //  email: 20251160032@ifba.edu.br
 //  Matrícula: 20251160032
-//  Semestre: 3º semestre
+//  Semestre: 2º semestre
 
 //  Copyright © 2016 Renato Novais. All rights reserved.
 // Última atualização: 07/05/2021
