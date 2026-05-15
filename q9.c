@@ -213,8 +213,28 @@ void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]){
                 totalNavios++;
                 
                 break;
+
+            default:
+
         }
     }
+}
+
+void navioAbatido(char tabJogador[TAM_TAB][TAM_TAB], int navio){
+    char jogada[TAM_TAB];
+    int tiros = TAM_TAB * TAM_TAB;
+    int naivo;
+    
+    for(int i = 0; tabJogador != '\0'; i++){
+        
+    }
+
+    while(jogada < tiros * 2 || jogada <= navio){
+
+    }
+
+
+
 }
 
 int posicaoNavioValida(int l, int c){
