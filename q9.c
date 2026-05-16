@@ -1,12 +1,13 @@
 #include <stdio.h>
 
-#define QTD_NAVIOS 5
+#define QTD_NAVIOS 2
 #define TAM_TAB 10
 
 void mostrarTab(char tab[TAM_TAB][TAM_TAB]);
 void iniciarTab(char tab[TAM_TAB][TAM_TAB]);
 int posicaoNavioValida(int l, int c);
 void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]);
+void transformarEmChar(int linha, int coluna);
 
 int main(){
     char tabJogador1[TAM_TAB][TAM_TAB];
@@ -68,12 +69,7 @@ void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]){
             printf("Informe a posição do seu navio, jogador\n");
             scanf("%s", jogada);
 
-            if(jogada[0] >= 'a' && jogada[0] <= 'z'){
-                jogada[0] -= 32;
-            }
-
-            linha = jogada[0] - 'A';
-            coluna = jogada[1] - '1';
+            transformarEmChar(linha, coluna);
 
             if(!posicaoNavioValida(linha, coluna)){
                 printf("Jogada Inválida!!");
@@ -96,12 +92,7 @@ void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]){
                 printf("Informe a posição do seu navio, jogador\n");
                 scanf("%s", jogada);
 
-                if(jogada[0] >= 'a' && jogada[0] <= 'z'){
-                    jogada[0] -= 32;
-                }
-
-                linha = jogada[0] - 'A';
-                coluna = jogada[1] - '1';
+                transformarEmChar(linha, coluna);
 
                 if(linha - tam_navio + 1 < 0){
                     printf("Navio maior que o limite!\n");
@@ -127,12 +118,7 @@ void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]){
                 printf("Informe a posição do seu navio, jogador\n");
                 scanf("%s", jogada);
 
-                if(jogada[0] >= 'a' && jogada[0] <= 'z'){
-                    jogada[0] -= 32;
-                }
-
-                linha = jogada[0] - 'A';
-                coluna = jogada[1] - '1';
+                transformarEmChar(linha, coluna);
 
                 if(linha + tam_navio > TAM_TAB){
                     printf("Navio maior que o limite!\n");
@@ -158,12 +144,7 @@ void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]){
                 printf("Informe a posição do seu navio, jogador\n");
                 scanf("%s", jogada);
 
-                if(jogada[0] >= 'a' && jogada[0] <= 'z'){
-                    jogada[0] -= 32;
-                }
-
-                linha = jogada[0] - 'A';
-                coluna = jogada[1] - '1';
+                transformarEmChar(linha, coluna);
 
                 if(coluna + tam_navio > TAM_TAB){
                     printf("Navio maior que o limite!\n");
@@ -189,12 +170,7 @@ void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]){
                 printf("Informe a posição do seu navio, jogador\n");
                 scanf("%s", jogada);
 
-                if(jogada[0] >= 'a' && jogada[0] <= 'z'){
-                    jogada[0] -= 32;
-                }
-
-                linha = jogada[0] - 'A';
-                coluna = jogada[1] - '1';
+                transformarEmChar(linha, coluna);
 
                 if(coluna - tam_navio + 1 < 0){
                     printf("Navio maior que o limite!\n");
@@ -220,21 +196,42 @@ void inserirNavios(char tabJogador[TAM_TAB][TAM_TAB]){
     }
 }
 
-void navioAbatido(char tabJogador[TAM_TAB][TAM_TAB], int navio){
+void navioAbatido(char tabJogador[TAM_TAB][TAM_TAB], char navio){
     char jogada[TAM_TAB];
     int tiros = TAM_TAB * TAM_TAB;
-    int naivo;
-    
-    for(int i = 0; tabJogador != '\0'; i++){
-        
+    int linha, coluna;
+    int i = 0;
+
+    while(jogada < tiros * 2 || jogada < QTD_NAVIOS){
+        printf("Informe em que posição deseja atirar: \n");
+        scanf("%s", jogada);
+
+        transformarEmChar(linha, coluna);
+
+        if(!posicaoNavioValida(linha, coluna)){
+            printf("Jogada Inválida!!");
+        }
+
+        if(jogada == 'N'){
+            tabJogador[linha][coluna] = 'O';
+
+            while(jogada == 'N'){
+                printf("Informe em que posição deseja atirar: \n");
+                scanf("%s", jogada);
+
+                transformarEmChar(linha, coluna);
+
+                if(!posicaoNavioValida(linha, coluna)){
+                    printf("Jogada Inválida!!");
+                }
+
+                tabJogador[linha][coluna] = 'O';
+            }
+
+        } else {
+            tabJogador[linha][coluna] = 'X';
+        }
     }
-
-    while(jogada < tiros * 2 || jogada <= navio){
-
-    }
-
-
-
 }
 
 int posicaoNavioValida(int l, int c){
@@ -243,4 +240,15 @@ int posicaoNavioValida(int l, int c){
     }
 
     return 1;
+}
+
+void transformarEmChar(int linha, int coluna){
+    char jogada[TAM_TAB];
+
+    if(jogada[0] >= 'a' && jogada[0] <= 'z'){
+        jogada[0] -= 32;
+    }
+
+    linha = jogada[0] - 'A';
+    coluna = jogada[1] - '1';
 }
