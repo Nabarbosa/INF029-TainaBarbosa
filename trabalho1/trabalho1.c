@@ -93,21 +93,21 @@ int teste(int a)
 
 int q1(char data[]){
 
-  int datavalida = 1;
+  int dataValida = 1;
   int dia = 0, mes = 0, ano = 0;
-  int p = 0;
+  int total = 0;
   int i = 0;
   int tamAno = 0;
 
-  while(data[i] != '\0'){   
+  while(data[i] != '\0'){
     if(data[i] == '/'){
-        p++;
+        total++;
     } else {
-        if(p == 0){
+        if(total == 0){
             dia = dia * 10 + (data[i] - '0');
-        } else if(p == 1){
-            mes = mes * 10 + (data[i] - '0');
-        } else if(p == 2){
+        } else if(total == 1){
+            mes = mes * 10 + (data[i] - '0');    
+        } else if(total == 2){
             ano = ano * 10 + (data[i] - '0');
             tamAno++;
         }
@@ -116,56 +116,58 @@ int q1(char data[]){
     i++;
 
     if(dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 0){
-        datavalida = 1;
+        dataValida = 1;
     } else {
-        datavalida = 0;
+        dataValida = 0;
     }
 
-    if(p != 2 && data[i] == '\0'){ 
-        datavalida = 0;
+    if(total != 2 && data[i] == '\0'){
+        dataValida = 0;
     }
 
     if(tamAno != 2 && tamAno != 4){
-        datavalida = 0;
-    }   
+        dataValida = 0;
+    }
 
     if(mes < 1 || mes > 12){
-        datavalida = 0;
+        dataValida = 0;
     }
 
     if(mes == 4 || mes == 6 || mes == 9 || mes == 11){
         if(dia < 1 || dia > 30){
-            datavalida = 0;
-        }   
+            dataValida = 0;
+        }
     } 
     
     else if(mes == 2){
         if((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)){
             if(dia < 1 || dia > 29){
-                datavalida = 0;
-            }
-        } 
-        
-        else {
-            if(dia < 1 || dia > 28){
-                datavalida = 0;
+                dataValida = 0;
             }
         }
-    } 
-    
-    else {
-        if(dia < 1 || dia > 31){
-            datavalida = 0;
+
+        else{
+            if(dia < 1 || dia > 28){
+                dataValida = 0;
+            }
         }
     }
 
+    else{
+        if(dia < 1 || dia > 31){
+            dataValida = 0;
+        }
+    }
+    
   }
 
+  if(dataValida){
+    return 1;
+  } else {
+    return 0;
+  }
+  
 
-  if (datavalida)
-      return 1;
-  else
-      return 0;
 }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -188,7 +190,7 @@ int q1(char data[]){
 DiasMesesAnos q2(char datainicial[], char datafinal[]){
     int d1 = 0, m1 = 0, a1 = 0;
     int d2 = 0, m2 = 0, a2 = 0;
-    int p = 0;
+    int total = 0;
     int i = 0;
 
     DiasMesesAnos dma;
@@ -203,13 +205,13 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]){
 
     while(datainicial[i] != '\0'){
         if(datainicial[i] == '/'){
-            p++;
+            total++;
         } else {
-            if(p == 0){
+            if(total == 0){
                 d1 = d1 * 10 + (datainicial[i] - '0');
-            } else if(p == 1){
+            } else if(total == 1){
                 m1 = m1 * 10 + (datainicial[i] - '0');
-            } else if(p == 2){
+            } else if(total == 2){
                 a1 = a1 * 10 + (datainicial[i] - '0');
             }
         }
@@ -217,17 +219,17 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]){
     }
 
     i = 0;
-    p = 0;
+    total = 0;
 
     while(datafinal[i] != '\0'){
         if(datafinal[i] == '/'){
-            p++;
+            total++;
         } else {
-            if(p == 0){
+            if(total == 0){
                 d2 = d2 * 10 + (datafinal[i] - '0');
-            } else if(p == 1){
+            } else if(total == 1){
                 m2 = m2 * 10 + (datafinal[i] - '0');
-            } else if(p == 2){
+            } else if(total == 2){
                 a2 = a2 * 10 + (datafinal[i] - '0');
             }
         }
@@ -312,8 +314,8 @@ int q3(char *texto, char c, int isCaseSensitive){
             if(texto[i] == c){
                 qtdOcorrencias++;
             }
-
-        } else {
+        }
+        else {
             if(texto[i] == c || texto[i] == (c - 32) || texto[i] == (c + 32)){
                 qtdOcorrencias++;
             }
@@ -363,9 +365,11 @@ int q4(char *strTexto, char *strBusca, int posicoes[30]) {
     }
     strTexto[j] = '\0';
 
-    if (strlen(strBusca) == 0) return 0;
+    if (strlen(strBusca) == 0){
+        return 0;
+    } 
 
-    for (i = 0; i < strlen(strTexto); i++) {
+    for (i = 0; i < strlen(strTexto); i++){
         for (j = i, k = 0; k < strlen(strBusca) && j < strlen(strTexto) && strTexto[j] == strBusca[k]; j++, k++);
 
         if (k == strlen(strBusca)) {
