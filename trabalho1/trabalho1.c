@@ -426,34 +426,40 @@ int q5(int num){
  */
 
 int q6(int numerobase, int numerobusca){
-    int qtdOcorrencias = 0;
-
-    int temp = numerobusca;
+    int qtdOcorrencia = 0;
+    int cop = 0;
     int tamanho = 0;
 
-    while (temp > 0) {
-        temp /= 10;
+    if(numerobusca == 0){
+        tamanho = 1;
+    }
+
+    cop = numerobusca;
+
+    while(cop > 0){
+        cop = cop / 10;
         tamanho++;
     }
 
     int divisor = 1;
-    for (int i = 0; i < tamanho; i++) {
-        divisor *= 10;
+    
+    for(int i = 0; i < tamanho; i++){
+        divisor = divisor * 10;
     }
 
-    while (numerobase > 0) {
+    while(numerobase > 0){
+        int part = numerobase % divisor;
+        
+        if(part == numerobusca){
+            qtdOcorrencia++;
+            numerobase = numerobase / divisor;
 
-        int parte = numerobase % divisor;
-
-        if (parte == numerobusca) {
-            qtdOcorrencias++;
-            numerobase /= divisor; 
         } else {
-            numerobase /= 10; 
+            numerobase = numerobase / 10;
         }
     }
 
-    return qtdOcorrencias;
+    return qtdOcorrencia;
 }
 /*------------------------------------------------------------------------------------------------------------------------------------------*/
 
