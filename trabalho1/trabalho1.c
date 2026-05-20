@@ -188,8 +188,8 @@ int q1(char data[]){
  */
 
 DiasMesesAnos q2(char datainicial[], char datafinal[]){
-    int d1 = 0, m1 = 0, a1 = 0;
-    int d2 = 0, m2 = 0, a2 = 0;
+    int dias1 = 0, mes1 = 0, ano1 = 0;
+    int dias2 = 0, mes2 = 0, ano2 = 0;
     int total = 0;
     int i = 0;
 
@@ -208,11 +208,11 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]){
             total++;
         } else {
             if(total == 0){
-                d1 = d1 * 10 + (datainicial[i] - '0');
+                dias1 = dias1 * 10 + (datainicial[i] - '0');
             } else if(total == 1){
-                m1 = m1 * 10 + (datainicial[i] - '0');
+                mes1 = mes1 * 10 + (datainicial[i] - '0');
             } else if(total == 2){
-                a1 = a1 * 10 + (datainicial[i] - '0');
+                ano1 = ano1 * 10 + (datainicial[i] - '0');
             }
         }
         i++;
@@ -226,31 +226,31 @@ DiasMesesAnos q2(char datainicial[], char datafinal[]){
             total++;
         } else {
             if(total == 0){
-                d2 = d2 * 10 + (datafinal[i] - '0');
+                dias2 = dias2 * 10 + (datafinal[i] - '0');
             } else if(total == 1){
-                m2 = m2 * 10 + (datafinal[i] - '0');
+                mes2 = mes2 * 10 + (datafinal[i] - '0');
             } else if(total == 2){
-                a2 = a2 * 10 + (datafinal[i] - '0');
+                ano2 = ano2 * 10 + (datafinal[i] - '0');
             }
         }
         i++;
     }
 
-    if(a1 > a2 || 
-       (a1 == a2 && m1 > m2) || 
-       (a1 == a2 && m1 == m2 && d1 > d2)){
+    if(ano1 > ano2 || 
+       (ano1 == ano2 && mes1 > mes2) || 
+       (ano1 == ano2 && mes1 == mes2 && dias1 > dias2)){
         dma.retorno = 4;
         return dma;
     }
 
-    int dias = d2 - d1;
-    int meses = m2 - m1;
-    int anos = a2 - a1;
+    int dias = dias2 - dias1;
+    int meses = mes2 - mes1;
+    int anos = ano2 - ano1;
 
     if (dias < 0) {
 
-        int mesAnterior = m2 - 1;
-        int anoReferencia = a2;
+        int mesAnterior = mes2 - 1;
+        int anoReferencia = ano2;
 
         if (mesAnterior == 0) {
             mesAnterior = 12;
