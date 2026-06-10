@@ -6,6 +6,12 @@
 
 int vetorPrincipal[TAM];
 
+typedef struct{
+    int *vetor;
+    int tamanho;
+    int elemento;
+}Auxiliar;
+
 /*
 Objetivo: criar estrutura auxiliar na posição 'posicao'.
 com tamanho 'tamanho'
