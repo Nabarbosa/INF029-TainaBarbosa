@@ -4,13 +4,13 @@
 
 #include "trabalho2.h"
 
-int vetorPrincipal[TAM];
-
 typedef struct{
     int *vetor;
     int tamanho;
-    int elemento;
+    int qtdElementos;
 }Auxiliar;
+
+Auxiliar vetorPrincipal[TAM];
 
 /*
 Objetivo: criar estrutura auxiliar na posição 'posicao'.
@@ -23,23 +23,44 @@ Rertono (int)
     SEM_ESPACO_DE_MEMORIA - Sem espaço de memória
     TAMANHO_INVALIDO - o tamanho deve ser maior ou igual a 1
 */
+
 int criarEstruturaAuxiliar(int posicao, int tamanho)
 {
-
     int retorno = 0;
-    // a posicao pode já existir estrutura auxiliar
-    retorno = JA_TEM_ESTRUTURA_AUXILIAR;
-    // se posição é um valor válido {entre 1 e 10}
-    retorno = POSICAO_INVALIDA;
-    // o tamanho ser muito grande
-    retorno = SEM_ESPACO_DE_MEMORIA;
-    // o tamanho nao pode ser menor que 1
-    retorno = TAMANHO_INVALIDO;
-    // deu tudo certo, crie
-    retorno = SUCESSO;
+    
+    if(posicao < 1 || posicao > TAM){
+        // se posição é um valor válido {entre 1 e 10}
+        retorno = POSICAO_INVALIDA;
+
+    }else if(tamanho < 1){
+        // o tamanho nao pode ser menor que 1
+        retorno = TAMANHO_INVALIDO;
+
+    }else {
+        posicao--;
+
+        if(vetorPrincipal[posicao].vetor){
+            // a posicao pode já existir estrutura auxiliar
+            retorno = JA_TEM_ESTRUTURA_AUXILIAR;
+        } else {
+            int *vetorAux = malloc(tamanho * sizeof(int));
+
+            if(vetorAux == NULL){
+                // o tamanho ser muito grande
+                retorno = SEM_ESPACO_DE_MEMORIA;
+            } else {
+                vetorPrincipal[posicao].vetor = vetorAux;
+                vetorPrincipal[posicao].tamanho = tamanho;
+                vetorPrincipal[posicao].qtdElementos = 0;
+                // deu tudo certo, crie
+                retorno = SUCESSO;
+            }
+        }
+    }
 
     return retorno;
 }
+
 
 /*
 Objetivo: inserir número 'valor' em estrutura auxiliar da posição 'posicao'
@@ -50,6 +71,7 @@ Rertono (int)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 CONSTANTES
 */
+
 int inserirNumeroEmEstrutura(int posicao, int valor)
 {
     int retorno = 0;
@@ -271,6 +293,11 @@ Objetivo: inicializa o programa. deve ser chamado ao inicio do programa
 
 void inicializar()
 {
+    for(int i = 0; i < TAM; i++){
+        vetorPrincipal[i].vetor = NULL;
+        vetorPrincipal[i].tamanho = 0;
+        vetorPrincipal[i].qtdElementos = 0;
+    }
 }
 
 /*
@@ -281,4 +308,11 @@ para poder liberar todos os espaços de memória das estruturas auxiliares.
 
 void finalizar()
 {
+    for(int i = 0; i < TAM; i++){
+        if(vetorPrincipal[i].vetor){
+            free(vetorPrincipal[i].vetor);
+            vetorPrincipal[i].tamanho = 0;
+            vetorPrincipal[i].qtdElementos = 0;
+        }
+    }
 }

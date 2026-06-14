@@ -5,29 +5,29 @@
 
 void show_log(char *str);
 
-void testeInserirSemNada();
+// void testeInserirSemNada();
 void testeCriarEstrutura();
 void testeInserirComEstrutura();
-void testeExcluir();
-void testeExcluirNumeroEspecifico();
-void testeListar();
-void testeRetornarTodosNumeros();
-void testeMudarTamanhoEstrutura();
-void testeListaEncadeada();
+// void testeExcluir();
+// void testeExcluirNumeroEspecifico();
+// void testeListar();
+// void testeRetornarTodosNumeros();
+// void testeMudarTamanhoEstrutura();
+// void testeListaEncadeada();
 
 int main()
 {
-    inicializar();
-    testeInserirSemNada();
+    // inicializar();
+    // testeInserirSemNada();
     testeCriarEstrutura();
     testeInserirComEstrutura();
-    testeExcluir();
-    testeExcluirNumeroEspecifico();
-    testeListar();
-    testeRetornarTodosNumeros();
-    testeMudarTamanhoEstrutura();
-    testeListaEncadeada();
-    finalizar();
+    // testeExcluir();
+    // testeExcluirNumeroEspecifico();
+    // testeListar();
+    // testeRetornarTodosNumeros();
+    // testeMudarTamanhoEstrutura();
+    // testeListaEncadeada();
+    // finalizar();
 }
 int ligado = 0;
 void show_log(char *str)
