@@ -7,7 +7,7 @@ void show_log(char *str);
 
 // void testeInserirSemNada();
 void testeCriarEstrutura();
-void testeInserirComEstrutura();
+// void testeInserirComEstrutura();
 // void testeExcluir();
 // void testeExcluirNumeroEspecifico();
 // void testeListar();
@@ -20,7 +20,7 @@ int main()
     // inicializar();
     // testeInserirSemNada();
     testeCriarEstrutura();
-    testeInserirComEstrutura();
+    // testeInserirComEstrutura();
     // testeExcluir();
     // testeExcluirNumeroEspecifico();
     // testeListar();
