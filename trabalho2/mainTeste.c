@@ -6,8 +6,8 @@
 void show_log(char *str);
 
 // void testeInserirSemNada();
-void testeCriarEstrutura();
-// void testeInserirComEstrutura();
+// void testeCriarEstrutura();
+void testeInserirComEstrutura();
 // void testeExcluir();
 // void testeExcluirNumeroEspecifico();
 // void testeListar();
@@ -19,8 +19,8 @@ int main()
 {
     // inicializar();
     // testeInserirSemNada();
-    testeCriarEstrutura();
-    // testeInserirComEstrutura();
+    // testeCriarEstrutura();
+    testeInserirComEstrutura();
     // testeExcluir();
     // testeExcluirNumeroEspecifico();
     // testeListar();

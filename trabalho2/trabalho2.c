@@ -78,17 +78,31 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
     int existeEstruturaAuxiliar = 0;
     int temEspaco = 0;
     int posicao_invalida = 0;
+    
+    if (posicao < 1 || posicao > TAM)
+        posicao_invalida = 1;
 
-    if (posicao_invalida)
+    if(posicao_invalida)
         retorno = POSICAO_INVALIDA;
+    
     else
     {
+        Auxiliar *vetorAux = &vetorPrincipal[posicao-1];
+
         // testar se existe a estrutura auxiliar
+        if(vetorAux->vetor != NULL)
+            existeEstruturaAuxiliar = 1;
+
         if (existeEstruturaAuxiliar)
         {
+            if(vetorAux->qtdElementos < vetorAux->tamanho)
+                temEspaco = 1;
+
             if (temEspaco)
             {
                 //insere
+                vetorAux->vetor[vetorAux->qtdElementos]= valor;
+                vetorAux->qtdElementos++;
                 retorno = SUCESSO;
             }
             else
