@@ -167,35 +167,43 @@ Rertono (int)
     POSICAO_INVALIDA - Posição inválida para estrutura auxiliar
 
 */
+
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
     int retorno = SUCESSO;
-    Auxiliar *vetorAux = &vetorPrincipal[posicao-1];
-
+    
     if (posicao < 1 || posicao > TAM)
-        retorno = POSICAO_INVALIDA; 
-
+    retorno = POSICAO_INVALIDA; 
+    
     else
     {
         posicao--;
 
-        if(vetorPrincipal[posicao].vetor)
+        Auxiliar *vetorAux = &vetorPrincipal[posicao];
+
+        if (vetorAux->vetor == NULL)
+            return SEM_ESTRUTURA_AUXILIAR;
+
+        if (vetorAux->qtdElementos == 0)
+            return ESTRUTURA_AUXILIAR_VAZIA;
+
+        for (int i = 0; i < vetorAux->qtdElementos; i++)
         {
-            if(vetorPrincipal[posicao].qtdElementos == 0)
-                retorno = ESTRUTURA_AUXILIAR_VAZIA;
-            
-            for(int i = 0; i < TAM; i++){
-                if(vetorPrincipal[posicao].vetor == valor){
-                    
+            if (vetorAux->vetor[i] == valor)
+            {
+                for (int j = i; j < vetorAux->qtdElementos - 1; j++)
+                {
+                    vetorAux->vetor[j] = vetorAux->vetor[j + 1];
                 }
+
+                vetorAux->qtdElementos--;
+
+                return SUCESSO;
             }
         }
-        else 
-            retorno = SEM_ESTRUTURA_AUXILIAR;
-            
-    }  
+    }
 
-    return retorno;
+        return NUMERO_INEXISTENTE;
 }
 
 // se posição é um valor válido {entre 1 e 10}
