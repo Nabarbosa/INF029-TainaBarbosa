@@ -8,8 +8,8 @@ void show_log(char *str);
 // void testeInserirSemNada();
 void testeCriarEstrutura();
 void testeInserirComEstrutura();
-// void testeExcluir();
-// void testeExcluirNumeroEspecifico();
+void testeExcluir();
+void testeExcluirNumeroEspecifico();
 // void testeListar();
 // void testeRetornarTodosNumeros();
 // void testeMudarTamanhoEstrutura();
@@ -17,19 +17,19 @@ void testeInserirComEstrutura();
 
 int main()
 {
-    // inicializar();
+    //inicializar();
     // testeInserirSemNada();
     testeCriarEstrutura();
     testeInserirComEstrutura();
-    // testeExcluir();
-    // testeExcluirNumeroEspecifico();
+    testeExcluir();
+    testeExcluirNumeroEspecifico();
     // testeListar();
     // testeRetornarTodosNumeros();
     // testeMudarTamanhoEstrutura();
     // testeListaEncadeada();
     // finalizar();
 }
-int ligado = 0;
+int ligado = 1;
 void show_log(char *str)
 {
     if (ligado)
