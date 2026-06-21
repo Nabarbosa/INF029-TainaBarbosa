@@ -173,7 +173,7 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
     int retorno = SUCESSO;
     
     if (posicao < 1 || posicao > TAM)
-    retorno = POSICAO_INVALIDA; 
+        retorno = POSICAO_INVALIDA; 
     
     else
     {
@@ -233,8 +233,29 @@ Retorno (int)
 
 int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
-
     int retorno = 0;
+    int invalido = ehPosicaoValida(posicao);
+
+    if(invalido != SUCESSO)
+        retorno = POSICAO_INVALIDA;
+
+    else
+    {
+        posicao--;
+
+        Auxiliar *aux = &vetorPrincipal[posicao];
+
+        if (aux->vetor == NULL)
+            retorno = SEM_ESTRUTURA_AUXILIAR; 
+
+        else 
+        {
+            for(int i = 0; i < aux->qtdElementos; i++)
+                vetorAux[i] = aux->vetor[i];
+
+            retorno = SUCESSO;
+        }
+    }
 
     return retorno;
 }
@@ -251,9 +272,29 @@ Rertono (int)
 int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
 {
 
-    int retorno = 0;
+    int retorno = SUCESSO;
+    int invalido = ehPosicaoValida(posicao);
 
-    
+    if(invalido != SUCESSO)
+        retorno = POSICAO_INVALIDA;
+
+    else
+    {
+        posicao--;
+
+        Auxiliar *auxVetor = &vetorPrincipal[posicao];
+
+        if (auxVetor->vetor == NULL)
+            retorno = SEM_ESTRUTURA_AUXILIAR; 
+
+        else 
+        {
+            for(int i = 0; i < auxVetor->qtdElementos; i++){
+                vetorAux[i] = auxVetor->vetor[i];
+            }
+        }
+    }
+
     return retorno;
 }
 
