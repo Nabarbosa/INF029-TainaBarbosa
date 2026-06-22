@@ -393,8 +393,19 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
                 vetorAux[posicaoAtual] = aux->vetor[j];
                 posicaoAtual++;
             }
+        }
 
-            
+        for(int i = 0; i < posicaoAtual - 1; i++)
+        {
+            for(int j = 0; j < posicaoAtual - 1 - i; j++)
+            {
+                if(vetorAux[j] > vetorAux[j + 1])
+                {
+                    int temp = vetorAux[j];
+                    vetorAux[j] = vetorAux[j + 1];
+                    vetorAux[j + 1] = temp;
+                }
+            }
         }
 
         retorno = SUCESSO;
