@@ -4,11 +4,12 @@
 
 #include "trabalho2.h"
 
-typedef struct{
+typedef struct
+{
     int *vetor;
     int tamanho;
     int qtdElementos;
-}Auxiliar;
+} Auxiliar;
 
 Auxiliar vetorPrincipal[TAM];
 
@@ -27,28 +28,37 @@ Rertono (int)
 int criarEstruturaAuxiliar(int posicao, int tamanho)
 {
     int retorno = 0;
-    
-    if(posicao < 1 || posicao > TAM){
+
+    if (posicao < 1 || posicao > TAM)
+    {
         // se posição é um valor válido {entre 1 e 10}
         retorno = POSICAO_INVALIDA;
-
-    }else if(tamanho < 1){
+    }
+    else if (tamanho < 1)
+    {
         // o tamanho nao pode ser menor que 1
         retorno = TAMANHO_INVALIDO;
-
-    }else {
+    }
+    else
+    {
         posicao--;
 
-        if(vetorPrincipal[posicao].vetor != NULL){
+        if (vetorPrincipal[posicao].vetor != NULL)
+        {
             // a posicao pode já existir estrutura auxiliar
             retorno = JA_TEM_ESTRUTURA_AUXILIAR;
-        } else {
+        }
+        else
+        {
             int *vetorAux = malloc(tamanho * sizeof(int));
 
-            if(vetorAux == NULL){
+            if (vetorAux == NULL)
+            {
                 // o tamanho ser muito grande
                 retorno = SEM_ESPACO_DE_MEMORIA;
-            } else {
+            }
+            else
+            {
                 vetorPrincipal[posicao].vetor = vetorAux;
                 vetorPrincipal[posicao].tamanho = tamanho;
                 vetorPrincipal[posicao].qtdElementos = 0;
@@ -60,7 +70,6 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
 
     return retorno;
 }
-
 
 /*
 Objetivo: inserir número 'valor' em estrutura auxiliar da posição 'posicao'
@@ -78,27 +87,27 @@ int inserirNumeroEmEstrutura(int posicao, int valor)
     int existeEstruturaAuxiliar = 0;
     int temEspaco = 0;
     int posicao_invalida = 0;
-    
+
     if (posicao < 1 || posicao > TAM)
-        retorno = POSICAO_INVALIDA; 
+        retorno = POSICAO_INVALIDA;
 
     else
     {
-        Auxiliar *vetorAux = &vetorPrincipal[posicao-1];
+        Auxiliar *vetorAux = &vetorPrincipal[posicao - 1];
 
         // testar se existe a estrutura auxiliar
-        if(vetorAux->vetor != NULL)
+        if (vetorAux->vetor != NULL)
             existeEstruturaAuxiliar = 1;
 
         if (existeEstruturaAuxiliar)
         {
-            if(vetorAux->qtdElementos < vetorAux->tamanho)
+            if (vetorAux->qtdElementos < vetorAux->tamanho)
                 temEspaco = 1;
 
             if (temEspaco)
             {
-                //insere
-                vetorAux->vetor[vetorAux->qtdElementos]= valor;
+                // insere
+                vetorAux->vetor[vetorAux->qtdElementos] = valor;
                 vetorAux->qtdElementos++;
                 retorno = SUCESSO;
             }
@@ -133,23 +142,22 @@ int excluirNumeroDoFinaldaEstrutura(int posicao)
     int retorno = SUCESSO;
 
     if (posicao < 1 || posicao > TAM)
-        retorno = POSICAO_INVALIDA; 
+        retorno = POSICAO_INVALIDA;
 
     else
     {
         posicao--;
 
-        if(vetorPrincipal[posicao].vetor != NULL)
+        if (vetorPrincipal[posicao].vetor != NULL)
         {
-            if(vetorPrincipal[posicao].qtdElementos == 0)
+            if (vetorPrincipal[posicao].qtdElementos == 0)
                 retorno = ESTRUTURA_AUXILIAR_VAZIA;
             else
                 vetorPrincipal[posicao].qtdElementos--;
         }
-        else 
+        else
             retorno = SEM_ESTRUTURA_AUXILIAR;
-            
-    }  
+    }
 
     return retorno;
 }
@@ -171,10 +179,10 @@ Rertono (int)
 int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
 {
     int retorno = SUCESSO;
-    
+
     if (posicao < 1 || posicao > TAM)
-        retorno = POSICAO_INVALIDA; 
-    
+        retorno = POSICAO_INVALIDA;
+
     else
     {
         posicao--;
@@ -203,7 +211,7 @@ int excluirNumeroEspecificoDeEstrutura(int posicao, int valor)
         }
     }
 
-        return NUMERO_INEXISTENTE;
+    return NUMERO_INEXISTENTE;
 }
 
 // se posição é um valor válido {entre 1 e 10}
@@ -236,7 +244,7 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
     int retorno = 0;
     int invalido = ehPosicaoValida(posicao);
 
-    if(invalido != SUCESSO)
+    if (invalido != SUCESSO)
         retorno = POSICAO_INVALIDA;
 
     else
@@ -246,11 +254,11 @@ int getDadosEstruturaAuxiliar(int posicao, int vetorAux[])
         Auxiliar *aux = &vetorPrincipal[posicao];
 
         if (aux->vetor == NULL)
-            retorno = SEM_ESTRUTURA_AUXILIAR; 
+            retorno = SEM_ESTRUTURA_AUXILIAR;
 
-        else 
+        else
         {
-            for(int i = 0; i < aux->qtdElementos; i++)
+            for (int i = 0; i < aux->qtdElementos; i++)
                 vetorAux[i] = aux->vetor[i];
 
             retorno = SUCESSO;
@@ -276,7 +284,7 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
     int retorno = 0;
     int invalido = ehPosicaoValida(posicao);
 
-    if(invalido != SUCESSO)
+    if (invalido != SUCESSO)
         retorno = POSICAO_INVALIDA;
 
     else
@@ -286,20 +294,20 @@ int getDadosOrdenadosEstruturaAuxiliar(int posicao, int vetorAux[])
         Auxiliar *aux = &vetorPrincipal[posicao];
 
         if (aux->vetor == NULL)
-            retorno = SEM_ESTRUTURA_AUXILIAR; 
+            retorno = SEM_ESTRUTURA_AUXILIAR;
 
-        else 
+        else
         {
             // Pegar os elementos de vetor e jogar em vetorAux
-            for(int i = 0; i < aux->qtdElementos; i++)
+            for (int i = 0; i < aux->qtdElementos; i++)
                 vetorAux[i] = aux->vetor[i];
 
             // Bubble Sort - Para ordenar
-            for(int i = 0; i < aux->qtdElementos - 1; i++)
+            for (int i = 0; i < aux->qtdElementos - 1; i++)
             {
-                for(int j = 0; j < aux->qtdElementos - 1 - i; j++)
+                for (int j = 0; j < aux->qtdElementos - 1 - i; j++)
                 {
-                    if(vetorAux[j] > vetorAux[j + 1])
+                    if (vetorAux[j] > vetorAux[j + 1])
                     {
                         int temp = vetorAux[j];
                         vetorAux[j] = vetorAux[j + 1];
@@ -329,23 +337,24 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
     int retorno = 0;
     int vazio = 1;
 
-    for(int i = 0; i < TAM; i++){
-        if(vetorPrincipal[i].vetor != NULL && vetorPrincipal[i].qtdElementos > 0)
+    for (int i = 0; i < TAM; i++)
+    {
+        if (vetorPrincipal[i].vetor != NULL && vetorPrincipal[i].qtdElementos > 0)
             vazio = 0;
     }
 
-    if(vazio)
+    if (vazio)
         retorno = TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;
 
     else
     {
         int posicaoAtual = 0;
 
-        for(int i = 0; i < TAM; i++)
+        for (int i = 0; i < TAM; i++)
         {
             Auxiliar *aux = &vetorPrincipal[i];
-            
-            for(int j = 0; j < aux->qtdElementos; j++)
+
+            for (int j = 0; j < aux->qtdElementos; j++)
             {
                 vetorAux[posicaoAtual] = aux->vetor[j];
                 posicaoAtual++;
@@ -353,7 +362,6 @@ int getDadosDeTodasEstruturasAuxiliares(int vetorAux[])
         }
 
         retorno = SUCESSO;
-
     }
 
     return retorno;
@@ -372,34 +380,35 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
     int retorno = 0;
     int vazio = 1;
 
-    for(int i = 0; i < TAM; i++){
-        if(vetorPrincipal[i].vetor != NULL && vetorPrincipal[i].qtdElementos > 0)
+    for (int i = 0; i < TAM; i++)
+    {
+        if (vetorPrincipal[i].vetor != NULL && vetorPrincipal[i].qtdElementos > 0)
             vazio = 0;
     }
 
-    if(vazio)
+    if (vazio)
         retorno = TODAS_ESTRUTURAS_AUXILIARES_VAZIAS;
 
     else
     {
         int posicaoAtual = 0;
-        
-        for(int i = 0; i < TAM; i++)
+
+        for (int i = 0; i < TAM; i++)
         {
             Auxiliar *aux = &vetorPrincipal[i];
-            
-            for(int j = 0; j < aux->qtdElementos; j++)
+
+            for (int j = 0; j < aux->qtdElementos; j++)
             {
                 vetorAux[posicaoAtual] = aux->vetor[j];
                 posicaoAtual++;
             }
         }
 
-        for(int i = 0; i < posicaoAtual - 1; i++)
+        for (int i = 0; i < posicaoAtual - 1; i++)
         {
-            for(int j = 0; j < posicaoAtual - 1 - i; j++)
+            for (int j = 0; j < posicaoAtual - 1 - i; j++)
             {
-                if(vetorAux[j] > vetorAux[j + 1])
+                if (vetorAux[j] > vetorAux[j + 1])
                 {
                     int temp = vetorAux[j];
                     vetorAux[j] = vetorAux[j + 1];
@@ -409,7 +418,6 @@ int getDadosOrdenadosDeTodasEstruturasAuxiliares(int vetorAux[])
         }
 
         retorno = SUCESSO;
-
     }
 
     return retorno;
@@ -429,39 +437,47 @@ Rertono (int)
 
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 {
-    if (posicao < 1 || posicao > TAM)
+    int retorno = 0;
+    int invalido = ehPosicaoValida(posicao);
+
+    if (invalido != SUCESSO)
         return POSICAO_INVALIDA;
 
-    posicao--;
+    else
+    {
+        posicao--;
 
-    Auxiliar *aux = &vetorPrincipal[posicao];
+        Auxiliar *vetorAux = &vetorPrincipal[posicao];
 
-    if (aux->vetor == NULL)
-        return SEM_ESTRUTURA_AUXILIAR;
+        if (vetorAux->vetor == NULL)
+            retorno = SEM_ESTRUTURA_AUXILIAR;
+        else
+        {
+            int tamanhoFinal = vetorAux->tamanho + novoTamanho;
 
-    if (novoTamanho == 0)
-        return NOVO_TAMANHO_INVALIDO;
+            if (tamanhoFinal < 1)
+                retorno = NOVO_TAMANHO_INVALIDO;
+            else
+            {
+                int *aux = realloc(vetorAux->vetor, tamanhoFinal * sizeof(int));
 
-    int tamanhoFinal = aux->tamanho + novoTamanho;
+                if (aux == NULL)
+                    retorno = SEM_ESPACO_DE_MEMORIA;
+                else
+                {
+                    vetorAux->vetor = aux;
+                    vetorAux->tamanho = tamanhoFinal;
 
-    if (tamanhoFinal < 1)
-        return NOVO_TAMANHO_INVALIDO;
+                    if (novoTamanho < 0)
+                        vetorAux->qtdElementos += novoTamanho;
 
-    int *novo = realloc(aux->vetor, tamanhoFinal * sizeof(int));
-
-    if (novo == NULL)
-        return SEM_ESPACO_DE_MEMORIA;
-
-    aux->vetor = novo;
-    aux->tamanho = tamanhoFinal;
-
-    if (aux->qtdElementos > tamanhoFinal)
-        aux->qtdElementos = tamanhoFinal;
-
-    if (aux->qtdElementos < 0)
-        aux->qtdElementos = 0;
-
-    return SUCESSO;
+                    retorno = SUCESSO;
+                }
+            }
+        }
+    }
+    
+    return retorno;
 }
 
 /*
@@ -473,12 +489,23 @@ Retorno (int)
     ESTRUTURA_AUXILIAR_VAZIA - estrutura auxiliar vazia
     Um número int > 0 correpondente a quantidade de elementos preenchidos da estrutura
 */
+
 int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 {
+    if (posicao < 1 || posicao > TAM)
+        return POSICAO_INVALIDA;
 
-    int retorno = 0;
+    posicao--;
 
-    return retorno;
+    Auxiliar *aux = &vetorPrincipal[posicao];
+
+    if (aux->vetor == NULL)
+        return SEM_ESTRUTURA_AUXILIAR;
+
+    if (aux->qtdElementos == 0)
+        return ESTRUTURA_AUXILIAR_VAZIA;
+
+    return aux->qtdElementos;
 }
 
 /*
@@ -488,6 +515,7 @@ Retorno (No*)
     NULL, caso não tenha nenhum número nas listas
     No*, ponteiro para o início da lista com cabeçote
 */
+
 No *montarListaEncadeadaComCabecote()
 {
 
@@ -506,7 +534,7 @@ void getDadosListaEncadeadaComCabecote(No *inicio, int vetorAux[])
 Objetivo: Destruir a lista encadeada com cabeçote a partir de início.
 O ponteiro inicio deve ficar com NULL.
 
-Retorno 
+Retorno
     void.
 */
 void destruirListaEncadeadaComCabecote(No **inicio)
@@ -514,13 +542,14 @@ void destruirListaEncadeadaComCabecote(No **inicio)
 }
 
 /*
-Objetivo: inicializa o programa. deve ser chamado ao inicio do programa 
+Objetivo: inicializa o programa. deve ser chamado ao inicio do programa
 
 */
 
 void inicializar()
 {
-    for(int i = 0; i < TAM; i++){
+    for (int i = 0; i < TAM; i++)
+    {
         vetorPrincipal[i].vetor = NULL;
         vetorPrincipal[i].tamanho = 0;
         vetorPrincipal[i].qtdElementos = 0;
@@ -528,15 +557,17 @@ void inicializar()
 }
 
 /*
-Objetivo: finaliza o programa. deve ser chamado ao final do programa 
+Objetivo: finaliza o programa. deve ser chamado ao final do programa
 para poder liberar todos os espaços de memória das estruturas auxiliares.
 
 */
 
 void finalizar()
 {
-    for(int i = 0; i < TAM; i++){
-        if(vetorPrincipal[i].vetor){
+    for (int i = 0; i < TAM; i++)
+    {
+        if (vetorPrincipal[i].vetor)
+        {
             free(vetorPrincipal[i].vetor);
             vetorPrincipal[i].tamanho = 0;
             vetorPrincipal[i].qtdElementos = 0;
