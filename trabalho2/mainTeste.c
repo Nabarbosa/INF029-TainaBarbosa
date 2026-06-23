@@ -12,7 +12,7 @@ void testeExcluir();
 void testeExcluirNumeroEspecifico();
 void testeListar();
 void testeRetornarTodosNumeros();
-// void testeMudarTamanhoEstrutura();
+void testeMudarTamanhoEstrutura();
 // void testeListaEncadeada();
 
 int main()
@@ -25,7 +25,7 @@ int main()
     testeExcluirNumeroEspecifico();
     testeListar();
     testeRetornarTodosNumeros();
-    // testeMudarTamanhoEstrutura();
+    testeMudarTamanhoEstrutura();
     // testeListaEncadeada();
     finalizar();
 }

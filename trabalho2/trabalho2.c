@@ -39,7 +39,7 @@ int criarEstruturaAuxiliar(int posicao, int tamanho)
     }else {
         posicao--;
 
-        if(vetorPrincipal[posicao].vetor){
+        if(vetorPrincipal[posicao].vetor != NULL){
             // a posicao pode já existir estrutura auxiliar
             retorno = JA_TEM_ESTRUTURA_AUXILIAR;
         } else {
@@ -139,7 +139,7 @@ int excluirNumeroDoFinaldaEstrutura(int posicao)
     {
         posicao--;
 
-        if(vetorPrincipal[posicao].vetor)
+        if(vetorPrincipal[posicao].vetor != NULL)
         {
             if(vetorPrincipal[posicao].qtdElementos == 0)
                 retorno = ESTRUTURA_AUXILIAR_VAZIA;
@@ -426,11 +426,42 @@ Rertono (int)
     NOVO_TAMANHO_INVALIDO - novo tamanho não pode ser negativo
     SEM_ESPACO_DE_MEMORIA - erro na alocação do novo valor
 */
+
 int modificarTamanhoEstruturaAuxiliar(int posicao, int novoTamanho)
 {
+    if (posicao < 1 || posicao > TAM)
+        return POSICAO_INVALIDA;
 
-    int retorno = 0;
-    return retorno;
+    posicao--;
+
+    Auxiliar *aux = &vetorPrincipal[posicao];
+
+    if (aux->vetor == NULL)
+        return SEM_ESTRUTURA_AUXILIAR;
+
+    if (novoTamanho == 0)
+        return NOVO_TAMANHO_INVALIDO;
+
+    int tamanhoFinal = aux->tamanho + novoTamanho;
+
+    if (tamanhoFinal < 1)
+        return NOVO_TAMANHO_INVALIDO;
+
+    int *novo = realloc(aux->vetor, tamanhoFinal * sizeof(int));
+
+    if (novo == NULL)
+        return SEM_ESPACO_DE_MEMORIA;
+
+    aux->vetor = novo;
+    aux->tamanho = tamanhoFinal;
+
+    if (aux->qtdElementos > tamanhoFinal)
+        aux->qtdElementos = tamanhoFinal;
+
+    if (aux->qtdElementos < 0)
+        aux->qtdElementos = 0;
+
+    return SUCESSO;
 }
 
 /*
