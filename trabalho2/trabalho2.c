@@ -538,17 +538,21 @@ No *montarListaEncadeadaComCabecote()
         
         for(int i = 0; i < TAM; i++)
         {
-            Auxiliar *aux = &vetorPrincipal[i];
-
-            for(int j = 0; j < aux->qtdElementos; j++)
+            if(vetorPrincipal[i].vetor != NULL && vetorPrincipal[i].qtdElementos > 0)
             {
-                No *novo = malloc(sizeof(No));
-                novo->conteudo = aux->vetor[j];
-                novo->prox = NULL;
-
-                atual->prox = novo;
-                atual = novo;
+                Auxiliar *aux = &vetorPrincipal[i];
+                
+                for(int j = 0; j < aux->qtdElementos; j++)
+                {
+                    No *novo = malloc(sizeof(No));
+                    novo->conteudo = aux->vetor[j];
+                    novo->prox = NULL;
+    
+                    atual->prox = novo;
+                    atual = novo;
+                }
             }
+            
         }
 
         return cabecote;
