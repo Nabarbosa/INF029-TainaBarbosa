@@ -13,7 +13,7 @@ void testeExcluirNumeroEspecifico();
 void testeListar();
 void testeRetornarTodosNumeros();
 void testeMudarTamanhoEstrutura();
-// void testeListaEncadeada();
+void testeListaEncadeada();
 
 int main()
 {
@@ -26,7 +26,7 @@ int main()
     testeListar();
     testeRetornarTodosNumeros();
     testeMudarTamanhoEstrutura();
-    // testeListaEncadeada();
+    testeListaEncadeada();
     finalizar();
 }
 int ligado = 1;
