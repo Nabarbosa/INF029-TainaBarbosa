@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include "trabalho1.h" 
 #include <stdlib.h>
+#include <string.h>
 
 
 DataQuebrada quebraData(char data[]);

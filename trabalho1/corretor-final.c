@@ -2,7 +2,7 @@
 #include<string.h>
 
 //renomeie o arquivo do include abaixo para PrimeiroUltimoNomeMATRICULA.h
-#include "trabalho1.c"
+#include "trabalho1.h"
 
 void testQ1();
 void testQ2();
