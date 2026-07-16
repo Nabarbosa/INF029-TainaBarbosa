@@ -27,7 +27,8 @@ typedef struct DQ
     int iDia; 
     int iMes;
     int iAno;
-    int valido; // 0 se inválido, e 1 se válido 
+    int valido; 
+    // 0 se inválido, e 1 se válido 
 
 } DataQuebrada;
 
