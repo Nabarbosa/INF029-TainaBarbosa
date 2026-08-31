@@ -1,9 +1,14 @@
 #include <stdio.h>
 #define TAM_ALUNO 3
 
+typedef struct Aluno{
+    int matricula;
+    char sexo;
+} Aluno;
+
 int main(void) {
 
-    int listaAluno[TAM_ALUNO];
+    Aluno listaAluno[TAM_ALUNO];
     int qtdAluno = 0;
     int opcao;
     int sair = 0;
@@ -53,7 +58,7 @@ int main(void) {
                                 if(qtdAluno == TAM_ALUNO){
                                     printf("Lista de Aluno cheia\n");
                                 } else {
-                                    listaAluno[qtdAluno] = matricula;
+                                    listaAluno[qtdAluno].matricula = matricula;
                                     qtdAluno++;
                                 }
                             }
@@ -61,6 +66,9 @@ int main(void) {
                         }
                         case 2:{
                             printf("\nListar Alunos\n");
+                            for(int i = 0; i < qtdAluno; i++){
+                                printf("Matricula: %d\n", listaAluno[i]);
+                            }
                             break;
                         }
                         case 3:{
