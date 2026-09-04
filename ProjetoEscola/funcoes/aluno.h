@@ -1,20 +1,22 @@
 #ifndef ALUNO_H
-#define Aluno_H
+#define ALUNO_H
 
 #include "validacoes.h"
 
 typedef struct aluno{
     int matricula;
     char nome[225];
-    char sexo[225];
+    char sexo;
     int cpf;
-    DtaNascimento dtNascimento;
+    dtaNascimento dtNascimento;
 } Aluno;
 
-typedef struct dt{
+typedef struct dtaNascimento{
     int dia;
     int mes;
     int ano;
-} DtaNascimento;
+} dtaNascimento;
+
+void cadastrarAluno(Aluno listaAluno[], int qtdAluno);
 
 #endif

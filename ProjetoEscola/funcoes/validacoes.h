@@ -6,7 +6,9 @@
 #include <string.h>
 #include <time.h>
 
-#define TAM_PESSOAS 3
+#define TAM_ALUNO 3
+#define TAM_DISCIPLINA 4
+#define TAM_PROFESSOR 2
 #define MAX_NOME_PESSOAS 256
 #define N_CPF 15 
 

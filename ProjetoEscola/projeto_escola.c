@@ -1,16 +1,17 @@
-#include <stdio.h>
-#define TAM_ALUNO 3
-
-typedef struct Aluno{
-    int matricula;
-    char sexo;
-} Aluno;
+#include "funcoes/disciplina.h"
+#include "funcoes/aluno.h"
+#include "funcoes/professor.h"
+#include "funcoes/validacoes.h"
 
 int main(void) {
 
-    Aluno listaAluno[TAM_ALUNO];
+    Aluno listaAluno[TAM_ALUNO] = {0};
+    Aluno listaProfessor[TAM_PROFESSOR] = {0};
+    Aluno listaDisciplina[TAM_DISCIPLINA] = {0};
+
     int qtdAluno = 0;
     int opcao;
+
     int sair = 0;
 
     while (!sair){
@@ -47,22 +48,7 @@ int main(void) {
                             break;
                         }
                         case 1:{
-                            printf("\nCadastro de Aluno(a)\n");
-                            printf("Digite a matricula do Aluno: ");
-                            int matricula;
-                            scanf("%d", &matricula);
-
-                            if(matricula <= 0){
-                                printf("Matrícula Inválida!\n");
-                            } else {
-                                if(qtdAluno == TAM_ALUNO){
-                                    printf("Lista de Aluno cheia\n");
-                                } else {
-                                    listaAluno[qtdAluno].matricula = matricula;
-                                    qtdAluno++;
-                                }
-                            }
-                            break;
+                            cadastrarAluno(listaAluno, qtdAluno);
                         }
                         case 2:{
                             printf("\nListar Alunos\n");

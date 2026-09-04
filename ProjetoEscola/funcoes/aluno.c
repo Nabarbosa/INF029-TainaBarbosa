@@ -2,14 +2,13 @@
 
 // CADASTRO DE ALUNO //
 
-void cadastrarAluno(Aluno listaAluno[], int qtdAluno)
-{
+void cadastrarAluno(Aluno listaAluno[], int qtdAluno){
     int matricula;
     char nomeAluno[MAX_NOME_PESSOAS];
+    char buffer[50];
     char cpf[20];
-    char sexoAluno[20];
 
-    if(qtdAluno == TAM_PESSOAS){
+    if(qtdAluno == TAM_ALUNO){
         printf("Lista de Alunos Cheia!");
         return;
     }
@@ -24,31 +23,36 @@ void cadastrarAluno(Aluno listaAluno[], int qtdAluno)
     }
 
     printf("Informe o nome do Aluno(a): \n");
-    scanf("%s", &nomeAluno);
+    fgets(nomeAluno, sizeof(nomeAluno), stdin);
+    nomeAluno[strcspn(nomeAluno, "\n")] = '\0';
     
-    printf("Informe o sexo do aluno(a): \n");
-    scanf("%s", &sexoAluno);
+    printf("Informe o sexo do aluno(a) em formato M - Masculino | F - Feminino: \n");
+    fgets(buffer, sizeof(buffer), stdin);
+    char sexoAluno = buffer[0];
 
-    printf("Informe a data de nascimento do aluno(a): \n");
+    printf("Informe a data de nascimento do aluno(a) em formato D/MM/AAAA: \n");
     dataNascimento(listaAluno, qtdAluno);
 
-    printf("Informe o CPF do aluno(a): \n");
-    scanf("%s", &cpf);
+    while(1){
+        printf("Informe o CPF do aluno(a): \n");
+        fgets(cpf, sizeof(cpf), stdin);
+        cpf[strcspn(cpf, "\n")] = '\0';
 
-    if(!validarCpf(cpf)){
-        printf("O CPF digitado inválido. Tente novamente!");
-        return;
-    }
+        if(!validarCpf(cpf)){
+            printf("O CPF digitado inválido. Tente novamente!");
+            return;
+        }
 
-    if(cpf == listaAluno[qtdAluno].cpf){
-        printf("O CPF digitado já existe em um cadastro!");
-        return;
+        if(cpf == listaAluno[qtdAluno].cpf){
+            printf("O CPF digitado já existe em um cadastro!");
+            return;
+        }
     }
     
     listaAluno[qtdAluno].matricula = matricula;
-    //listaAluno[qtdAluno].nome = nomeAluno;
-    //listaAluno[qtdAluno].sexo = sexoAluno;
-    listaAluno[qtdAluno].cpf = cpf;
+    listaAluno[qtdAluno].sexo = sexoAluno;
+    strcpy(listaAluno[qtdAluno].nome, nomeAluno);
+    strcpy(listaAluno[qtdAluno].cpf, cpf);
 
     qtdAluno++;
 
