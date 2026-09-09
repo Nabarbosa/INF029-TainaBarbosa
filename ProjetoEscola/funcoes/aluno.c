@@ -1,4 +1,5 @@
 #include "aluno.h"
+#include "validacoes.h"
 
 // CADASTRO DE ALUNO //
 
@@ -43,7 +44,7 @@ void cadastrarAluno(Aluno listaAluno[], int qtdAluno){
             return;
         }
 
-        if(cpf == listaAluno[qtdAluno].cpf){
+        if(strcmp(cpf, listaAluno[qtdAluno].cpf) == 0){
             printf("O CPF digitado já existe em um cadastro!");
             return;
         }

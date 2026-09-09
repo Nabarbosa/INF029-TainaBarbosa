@@ -1,5 +1,4 @@
 #include "validacoes.h"
-#include "aluno.h"
 
 // ANO ATUAL //
 

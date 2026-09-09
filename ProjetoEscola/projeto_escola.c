@@ -53,7 +53,7 @@ int main(void) {
                         case 2:{
                             printf("\nListar Alunos\n");
                             for(int i = 0; i < qtdAluno; i++){
-                                printf("Matricula: %d\n", listaAluno[i]);
+                                printf("Matricula: %d\n", listaAluno[i].matricula);
                             }
                             break;
                         }

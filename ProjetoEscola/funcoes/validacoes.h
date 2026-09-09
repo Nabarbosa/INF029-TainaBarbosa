@@ -12,6 +12,8 @@
 #define MAX_NOME_PESSOAS 256
 #define N_CPF 15 
 
+#include "aluno.h"
+
 int anoAtual();
 int validarData(int dia, int mes, int ano);
 void dataNascimento(Aluno lista_aluno[], int indice);
