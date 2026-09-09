@@ -1,6 +1,8 @@
 #ifndef ALUNO_H
 #define ALUNO_H
 
+#include "validacoes.h"
+
 typedef struct dtaNascimento{
     int dia;
     int mes;
@@ -9,9 +11,9 @@ typedef struct dtaNascimento{
 
 typedef struct aluno{
     int matricula;
-    char nome[225];
+    char nome[MAX_NOME_PESSOAS];
     char sexo;
-    char cpf[15];
+    char cpf[N_CPF];
     DataNascimento dtNascimento;
 } Aluno;
 

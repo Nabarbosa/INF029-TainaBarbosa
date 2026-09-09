@@ -23,7 +23,7 @@ void cadastrarAluno(Aluno listaAluno[], int qtdAluno){
         printf("Matrícula Inválida!\n");
     }
 
-    printf("Informe o nome do Aluno(a): \n");
+    printf("Informe o nome completo do Aluno(a): \n");
     fgets(nomeAluno, sizeof(nomeAluno), stdin);
     nomeAluno[strcspn(nomeAluno, "\n")] = '\0';
     
