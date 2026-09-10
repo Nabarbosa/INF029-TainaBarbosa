@@ -35,28 +35,6 @@ int validarData(int dia, int mes, int ano){
     return 1;
 }
 
-// DATA DE NASCIMENTO //
-
-void dataNascimento(Aluno lista_aluno[], int indice){
-    int dia, mes, ano;
-
-    while(1){
-        scanf("%d/%d/%d", &dia, &mes, &ano);
-        getchar();
-
-        if(!validarData(dia, mes, ano)){
-            printf("Data digitada inválida. Tente novamente!\n");
-            continue;
-        }
-
-        lista_aluno[indice].dtNascimento.dia = dia;
-        lista_aluno[indice].dtNascimento.mes = mes;
-        lista_aluno[indice].dtNascimento.ano = ano;
-
-        break;
-    }
-}
-
 // VALIDAR CPF //
 
 int validarCpf(char cpf[]){
