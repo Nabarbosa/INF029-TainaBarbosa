@@ -42,6 +42,7 @@ void dataNascimento(Aluno lista_aluno[], int indice){
 
     while(1){
         scanf("%d/%d/%d", &dia, &mes, &ano);
+        getchar();
 
         if(!validarData(dia, mes, ano)){
             printf("Data digitada inválida. Tente novamente!\n");

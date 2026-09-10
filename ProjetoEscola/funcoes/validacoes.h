@@ -1,8 +1,6 @@
 #ifndef VALIDACOES_H
 #define VALIDACOES_H
 
-#include "aluno.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +15,6 @@
 
 int anoAtual();
 int validarData(int dia, int mes, int ano);
-void dataNascimento(Aluno lista_aluno[], int indice);
 
 int validarCpf(char cpf[]);
 

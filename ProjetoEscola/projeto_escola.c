@@ -3,6 +3,9 @@
 #include "funcoes/professor.h"
 #include "funcoes/validacoes.h"
 
+// cd ./ProjetoEscola/
+// gcc projeto_escola.c funcoes/*.c -I funcoes -o projeto_escola && ./projeto_escola 
+
 int main(void) {
 
     Aluno listaAluno[TAM_ALUNO] = {0};
@@ -48,7 +51,7 @@ int main(void) {
                             break;
                         }
                         case 1:{
-                            cadastrarAluno(listaAluno, qtdAluno);
+                            cadastrarAluno(listaAluno, &qtdAluno);
                         }
                         case 2:{
                             printf("\nListar Alunos\n");
