@@ -66,6 +66,7 @@ int validarCpf(char cpf[]){
     if(primeiroDig != (cpf[9] - '0')) return 0;
 
     // Verificação segundo digito //
+    soma = 0;
 
     for(int i = 0; i < 10; i++){
         soma += (cpf[i] - '0') * (11 - i);
