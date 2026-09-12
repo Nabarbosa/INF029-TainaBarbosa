@@ -23,6 +23,20 @@ void dataNascimento(Aluno lista_aluno[], int indice){
     }
 }
 
+void ordenarDataNascimento(DataNascimento dtNascimento, int qtdAluno){
+    DataNascimento copiaDataNacs[qtdAluno];
+
+    for(int i = 0; i < qtdAluno - 1; i++){
+        for(int j = i + 1; j < qtdAluno; j++){
+            if(strcmp(copiaDataNacs[i].ano, copiaDataNacs[j].ano) > 0){
+                DataNascimento aux = copiaDataNacs[i];
+                copiaDataNacs[i] = copiaDataNacs[j];
+                copiaDataNacs[j] = aux;
+            }
+        }
+    }
+}
+
 // CADASTRO DE ALUNO //
 
 void cadastrarAluno(Aluno listaAluno[], int *qtdAluno){
@@ -89,10 +103,10 @@ void menuListagemAlunos(){
 
     printf("\n====== Menu Listagem de Alunos ======\n");
     printf("1 - Listar alunos por ordem alfabética\n");
-    printf("1 - Listar alunos por ordem de matrícula\n");
-    printf("2 - Listar alunos por sexo(Masculino / Feminino)\n");
-    printf("3 - Listar alunos por data de nascimento\n");
-    printf("4 - Exibir aniversáriantes do mês\n");
+    printf("2 - Listar alunos por ordem de matrícula\n");
+    printf("3 - Listar alunos por sexo(Masculino / Feminino)\n");
+    printf("4 - Listar alunos por data de nascimento\n");
+    printf("5 - Exibir aniversáriantes do mês\n");
 
 }
 
@@ -113,7 +127,7 @@ void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao){
     if(opcao == 1){
         // Ordenação por ordem alfabética //
         for(int i = 0; i < qtdAluno - 1; i++){
-            for(int j = i + 1; j < qtdAluno){
+            for(int j = i + 1; j < qtdAluno; j++){
                 if(strcmp(copiaAluno[i].nome, copiaAluno[j].nome) > 0){
                     Aluno aux = copiaAluno[i];
                     copiaAluno[i] = copiaAluno[j];
@@ -126,7 +140,7 @@ void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao){
     if(opcao == 2){
          // Ordenação por ordem de matricula //
         for(int i = 0; i < qtdAluno - 1; i++){
-            for(int j = i + 1; j < qtdAluno){
+            for(int j = i + 1; j < qtdAluno; j++){
                 if(strcmp(copiaAluno[i].matricula, copiaAluno[j].matricula) > 0){
                     Aluno aux = copiaAluno[i];
                     copiaAluno[i] = copiaAluno[j];
@@ -145,8 +159,47 @@ void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao){
 
         switch(escolha){
             case 1: {
+                for(int i = 0; i < qtdAluno; i++){
+                    if(copiaAluno[i].sexo != 'F'){
+                        continue;
+                    }
+                }
+
+            }
+            case 2: {
+                for(int i = 0; i < qtdAluno; i++){
+                    if(copiaAluno[i].sexo != 'M'){
+                        continue;
+                    }
+                }
 
             }
         }
     }
+
+    /*
+    if(opcao == 4){
+        // Ordenação por data de nascimento //
+        ordenarDataNascimento()
+    }
+    */
+    
+    int contador = 0;
+
+    for(int i = 0; i < qtdAluno; i++){
+        printf("--------------- Aluno: %d -------------\n", contador++);
+        printf("Matrícula: %d\n", copiaAluno[i].matricula);
+        printf("Nome do(a) Aluno(a): %s\n", copiaAluno[i].nome);
+        printf("CPF do(a) Aluno(a): %s\n", copiaAluno[i].cpf);
+        printf("Sexo do(a) Aluno(a): %c\n", copiaAluno[i].sexo);
+        printf("Data de nascimento: %d/%d/%d\n", copiaAluno[i].dtNascimento.dia, copiaAluno[i].dtNascimento.mes, copiaAluno[i].dtNascimento.ano);
+        printf("--------------------------------------------\n");
+    }
+
+    if(contador == 1){
+        printf("Matricula do Aluno não foi encontrada!");
+    }
 }
+
+// ATUALIZAR ALUNO //
+
