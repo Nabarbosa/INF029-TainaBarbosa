@@ -9,6 +9,15 @@ int anoAtual(){
     return t.tm_year + 1900;
 }
 
+// MES ATUAL //
+
+int mesAtual(){
+    time_t set_time = time(NULL);
+    struct tm t = *localtime(&set_time);
+
+    return t.tm_mon + 1;
+}
+
 // VALIDAR DATA //
 
 int validarData(int dia, int mes, int ano){

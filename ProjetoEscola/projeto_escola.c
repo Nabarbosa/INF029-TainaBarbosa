@@ -38,11 +38,13 @@ int main(void) {
                 int opcaoAluno;
 
                 while(!sairAluno){
+                    printf("\n======================================= \n");
                     printf("0 - Voltar ao Menu\n");
                     printf("1 - Cadastrar Aluno\n");
                     printf("2 - Listar Aluno\n");
                     printf("3 - Atualizar Aluno\n");
                     printf("4 - Excluir Aluno\n");
+                    printf("======================================= \n");
                     scanf("%d", &opcaoAluno);
 
                     switch (opcaoAluno){
@@ -51,21 +53,25 @@ int main(void) {
                             break;
                         }
                         case 1:{
+                            printf("\n====== Cadastar Alunos ======\n");
                             cadastrarAluno(listaAluno, &qtdAluno);
+                            break;
                         }
                         case 2:{
-                            printf("\nListar Alunos\n");
-                            for(int i = 0; i < qtdAluno; i++){
-                                printf("Matricula: %d\n", listaAluno[i].matricula);
-                            }
+                            menuListagemAlunos();
+                            int escolha;
+                            scanf("%d", &escolha);
+
+                            printf("\n====== Listar Alunos ======\n");
+                            listarAlunos(listaAluno, qtdAluno, escolha);
                             break;
                         }
                         case 3:{
-                            printf("\nAtualizar Aluno(a)\n");
+                            printf("\n====== Atualizar Aluno(a) ======\n");
                             break;
                         }
                         case 4:{
-                            printf("\nExcluir Aluno(a)\n");
+                            printf("\n====== Excluir Aluno(a) ======\n");
                             break;
                         }
                         

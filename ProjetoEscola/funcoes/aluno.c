@@ -23,16 +23,24 @@ void dataNascimento(Aluno lista_aluno[], int indice){
     }
 }
 
-void ordenarDataNascimento(DataNascimento dtNascimento, int qtdAluno){
-    DataNascimento copiaDataNacs[qtdAluno];
+//  ORDENAR DATA DE NASCIMENTO //
+
+void ordenarDataNascimento(Aluno listaAluno[], int qtdAluno){
 
     for(int i = 0; i < qtdAluno - 1; i++){
         for(int j = i + 1; j < qtdAluno; j++){
-            if(strcmp(copiaDataNacs[i].ano, copiaDataNacs[j].ano) > 0){
-                DataNascimento aux = copiaDataNacs[i];
-                copiaDataNacs[i] = copiaDataNacs[j];
-                copiaDataNacs[j] = aux;
-            }
+
+            DataNascimento data1 = listaAluno[i].dtNascimento;
+            DataNascimento data2 = listaAluno[j].dtNascimento;
+
+            if(data1.ano > data2.ano ||
+                data1.ano == data2.ano && data1.mes > data2.mes ||
+                data1.ano == data2.ano && data1.mes == data2.mes && data1.dia > data2.dia){
+
+                    Aluno aux = listaAluno[i];
+                    listaAluno[i] = listaAluno[j];
+                    listaAluno[j] = aux;
+                }
         }
     }
 }
@@ -81,10 +89,20 @@ void cadastrarAluno(Aluno listaAluno[], int *qtdAluno){
             continue;
         }
 
-        if(strcmp(cpf, listaAluno[*qtdAluno].cpf) == 0){
-            printf("O CPF digitado já existe em um cadastro!\n");
-            continue;
+        int cpfExiste = 0;
+
+        for(int i = 0; i < *qtdAluno; i++){
+            if(strcmp(cpf, listaAluno[*qtdAluno].cpf) == 0){
+                cpfExiste = 1;
+                break;
+            }
         }
+
+        if(cpfExiste){
+        printf("O CPF digitado já existe em um cadastro!\n");
+        continue;
+    }
+
         break;
     }
     
@@ -128,7 +146,7 @@ void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao){
         // Ordenação por ordem alfabética //
         for(int i = 0; i < qtdAluno - 1; i++){
             for(int j = i + 1; j < qtdAluno; j++){
-                if(strcmp(copiaAluno[i].nome, copiaAluno[j].nome) > 0){
+                if(copiaAluno[i].nome, copiaAluno[j].nome > 0){
                     Aluno aux = copiaAluno[i];
                     copiaAluno[i] = copiaAluno[j];
                     copiaAluno[j] = aux;
@@ -141,7 +159,7 @@ void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao){
          // Ordenação por ordem de matricula //
         for(int i = 0; i < qtdAluno - 1; i++){
             for(int j = i + 1; j < qtdAluno; j++){
-                if(strcmp(copiaAluno[i].matricula, copiaAluno[j].matricula) > 0){
+                if(copiaAluno[i].matricula, copiaAluno[j].matricula > 0){
                     Aluno aux = copiaAluno[i];
                     copiaAluno[i] = copiaAluno[j];
                     copiaAluno[j] = aux;
@@ -153,7 +171,7 @@ void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao){
     if(opcao == 3){
         int escolha;
         printf("1 - Listar alunos do sexo Masculino\n");
-        printf("1 - Listar alunos do sexo Feminino\n");
+        printf("2 - Listar alunos do sexo Feminino\n");
         printf("Digite sua opção:");
         scanf("%d", &escolha);
 
@@ -177,14 +195,39 @@ void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao){
         }
     }
 
-    /*
     if(opcao == 4){
         // Ordenação por data de nascimento //
-        ordenarDataNascimento()
+        ordenarDataNascimento(copiaAluno, qtdAluno);   
     }
-    */
+
+    if(opcao == 5){
+        // Aniversariantes do mês //
+        int mes = mesAtual();
+        int encontrou = 0;
+
+         printf("\n====== Aniversariantes do mês ======\n");
+
+        for(int i = 0; i < qtdAluno; i++){
+            if(copiaAluno[i].dtNascimento.mes == mes){
+                printf("Nome: %s\n", copiaAluno[i].nome);
+                printf("Data de nascimento: %02d/%02d/%d\n",
+                    copiaAluno[i].dtNascimento.dia,
+                    copiaAluno[i].dtNascimento.mes,
+                    copiaAluno[i].dtNascimento.ano);
+
+                printf("----------------------------------\n");
+
+                encontrou = 1;
+            }
+        }
+        if(!encontrou){
+            printf("Não há aniversariantes neste mês.\n");
+        }
+
+        return;
+    }
     
-    int contador = 0;
+    int contador = 1;
 
     for(int i = 0; i < qtdAluno; i++){
         printf("--------------- Aluno: %d -------------\n", contador++);
