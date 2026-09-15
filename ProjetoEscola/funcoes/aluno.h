@@ -19,9 +19,12 @@ typedef struct aluno{
 
 
 void cadastrarAluno(Aluno listaAluno[], int *qtdAluno);
-void listarAlunos(Aluno listarAluno[], int qtdAluno, int opcao);
+void listarAlunos(Aluno listaAluno[], int qtdAluno, int opcao);
+void atualizarAluno(Aluno listaAluno[], int qtdAluno);
+void excluirAluno(Aluno listaAluno[], int *qtdAluno);
 
 void menuListagemAlunos();
+void menuAtualizarAlunos();
 
 void dataNascimento(Aluno lista_aluno[], int indice);
 void ordenarDataNascimento(Aluno listaAluno[], int qtdAluno);

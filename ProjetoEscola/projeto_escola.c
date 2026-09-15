@@ -18,11 +18,12 @@ int main(void) {
     int sair = 0;
 
     while (!sair){
-        printf("Projeto Escola\n");
-        printf("0 - Sair\n");
-        printf("1 - Módulo Aluno\n");
-        printf("2 - Módulo Professor\n");
-        printf("3 - Módulo Disciplina\n");
+        printf("\n========= Projeto Escola =========\n");
+        printf("\t0 - Sair\n");
+        printf("\t1 - Módulo Aluno\n");
+        printf("\t2 - Módulo Professor\n");
+        printf("\t3 - Módulo Disciplina\n");
+        printf("===================================\n");
     
         scanf("%d", &opcao);
     
@@ -39,11 +40,11 @@ int main(void) {
 
                 while(!sairAluno){
                     printf("\n======================================= \n");
-                    printf("0 - Voltar ao Menu\n");
-                    printf("1 - Cadastrar Aluno\n");
-                    printf("2 - Listar Aluno\n");
-                    printf("3 - Atualizar Aluno\n");
-                    printf("4 - Excluir Aluno\n");
+                    printf("\t0 - Voltar ao Menu\n");
+                    printf("\t1 - Cadastrar Aluno\n");
+                    printf("\t2 - Listar Aluno\n");
+                    printf("\t3 - Atualizar Aluno\n");
+                    printf("\t4 - Excluir Aluno\n");
                     printf("======================================= \n");
                     scanf("%d", &opcaoAluno);
 
@@ -68,10 +69,12 @@ int main(void) {
                         }
                         case 3:{
                             printf("\n====== Atualizar Aluno(a) ======\n");
+                            atualizarAluno(listaAluno,qtdAluno);
                             break;
                         }
                         case 4:{
                             printf("\n====== Excluir Aluno(a) ======\n");
+                            excluirAluno(listaAluno, &qtdAluno);
                             break;
                         }
                         
