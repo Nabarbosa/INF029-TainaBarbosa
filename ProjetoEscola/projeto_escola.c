@@ -9,10 +9,11 @@
 int main(void) {
 
     Aluno listaAluno[TAM_ALUNO] = {0};
-    Aluno listaProfessor[TAM_PROFESSOR] = {0};
-    Aluno listaDisciplina[TAM_DISCIPLINA] = {0};
+    // Professor listaProfessor[TAM_PROFESSOR] = {0};
+    // Disciplina listaDisciplina[TAM_DISCIPLINA] = {0};
 
     int qtdAluno = 0;
+
     int opcao;
 
     int sair = 0;
