@@ -3,7 +3,7 @@
 
 #include "validacoes.h"
 
-typedef struct dtaNascimento{
+typedef struct {
     int dia;
     int mes;
     int ano;
