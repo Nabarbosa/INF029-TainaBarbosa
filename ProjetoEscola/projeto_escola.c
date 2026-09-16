@@ -91,8 +91,59 @@ int main(void) {
 
             case 2:{
                 printf("\nMódulo Professor\n");
+
+                int sairProfessor = 0;
+                int opcaoProf;
+
+                while(!sairProfessor){
+                    printf("\n======================================= \n");
+                    printf("\t0 - Voltar ao Menu\n");
+                    printf("\t1 - Cadastrar Professor\n");
+                    printf("\t2 - Listar Professor\n");
+                    printf("\t3 - Atualizar Professor\n");
+                    printf("\t4 - Excluir Professor\n");
+                    printf("======================================= \n");
+                    scanf("%d", &opcaoProf);
+
+                    switch (opcaoProf){
+                        case 0:{
+                            sairProfessor = 1;
+                            break;
+                        }
+                        case 1:{
+                            printf("\n====== Cadastar Professores ======\n");
+                            cadastrarProfessor(listaProfessor, &qtdProf);
+                            break;
+                        }
+                        case 2:{
+                            menuListagemProfessor();
+                            int escolha;
+                            scanf("%d", &escolha);
+
+                            printf("\n====== Listar Professores ======\n");
+                            listarProfessores(listaProfessor, qtdProf, escolha);
+                            break;
+                        }
+                        case 3:{
+                            printf("\n====== Atualizar Professor(a) ======\n");
+                            atualizarProfessor(listaProfessor,qtdProf);
+                            break;
+                        }
+                        case 4:{
+                            printf("\n====== Excluir Professor(a) ======\n");
+                            excluirAluno(listaProfessor, &qtdProf);
+                            break;
+                        }
+                        
+                        default:{
+                            printf("\nOpção Inválida!\n");
+                        }
+                    }
+                }
+
                 break;
             }
+            
             case 3:{
                 printf("\nMódulo Disciplina\n");
                 break;
