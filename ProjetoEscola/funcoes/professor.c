@@ -5,7 +5,7 @@
 
 // DATA DE NASCIMENTO //
 
-void dataNascimento(Professor listaProfessor[], int indice){
+void dataNascimentoProfessor(Professor listaProfessor[], int indice){
     int dia, mes, ano;
 
     while(1){
@@ -27,11 +27,11 @@ void dataNascimento(Professor listaProfessor[], int indice){
 
 // ORDENAR DATA DE NASCIMENTO //
 
-void ordenarDataNascimento(Professor listaProfessor[], int qtdProf){
+void ordenarDataNascimentoProfessor(Professor listaProfessor[], int qtdProf){
     for(int i = 0; i < qtdProf - 1; i++){
         for(int j = i + 1; j < qtdProf; j++){
-            DataNascimento data1 = listaProfessor[i].dtNascimento;
-            DataNascimento data2 = listaProfessor[j].dtNascimento;
+            DataNascimentoProfessor data1 = listaProfessor[i].dtNascimento;
+            DataNascimentoProfessor data2 = listaProfessor[j].dtNascimento;
 
             if(data1.ano > data2.ano ||
                (data1.ano == data2.ano && data1.mes > data2.mes) ||
@@ -53,7 +53,7 @@ void cadastrarProfessor(Professor listaProfessor[], int *qtdProf){
     char buffer[50];
     char cpf[20];
 
-    if(*qtdAluno == TAM_PROFESSOR){
+    if(*qtdProf == TAM_PROFESSOR){
         printf("Lista de Profesores Cheia!\n");
         return;
     }
@@ -94,7 +94,7 @@ void cadastrarProfessor(Professor listaProfessor[], int *qtdProf){
     char sexoProfessor = buffer[0];
 
     printf("\nInforme a data de nascimento do Professor(a) em formato D/MM/AAAA: \n");
-    dataNascimento(listaProfessor, *qtdProf);
+    dataNascimentoProfessor(listaProfessor, *qtdProf);
 
     while(1){
         printf("\nInforme o CPF do Professor(a) sem os caracteres especiais: \n");
@@ -155,7 +155,7 @@ void menuAtualizarProfessor(){
 // LISTAR PROFESSOR //
 
 void listarProfessores(Professor listaProfessor[], int qtdProf, int opcao){
-    if(qtdProfessor == 0){
+    if(qtdProf == 0){
         printf("Lista de Professores vazia!\n");
         return;
     }
@@ -223,7 +223,7 @@ void listarProfessores(Professor listaProfessor[], int qtdProf, int opcao){
     }
     else if(opcao == 4){
         // Ordenação por data de nascimento
-        ordenarDataNascimento(copiaProfessor, qtdProf);   
+        ordenarDataNascimentoProfessor(copiaProfessor, qtdProf);   
     }
     else if(opcao == 5){
         // Aniversariantes do mês

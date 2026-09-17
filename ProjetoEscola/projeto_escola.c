@@ -126,12 +126,12 @@ int main(void) {
                         }
                         case 3:{
                             printf("\n====== Atualizar Professor(a) ======\n");
-                            atualizarProfessor(listaProfessor,qtdProf);
+                            atualizarProfessor(listaProfessor, qtdProf);
                             break;
                         }
                         case 4:{
                             printf("\n====== Excluir Professor(a) ======\n");
-                            excluirAluno(listaProfessor, &qtdProf);
+                            excluirProfessor(listaProfessor, &qtdProf);
                             break;
                         }
                         
@@ -143,7 +143,7 @@ int main(void) {
 
                 break;
             }
-            
+
             case 3:{
                 printf("\nMódulo Disciplina\n");
                 break;

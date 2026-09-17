@@ -25,7 +25,7 @@ void excluirProfessor(Professor listaProfessor[], int *qtdProf);
 void menuListagemProfessor();
 void menuAtualizarProfessor();
 
-void dataNascimento(Professor listaProfessor[], int indice);
-void ordenarDataNascimento(Professor listaProfessor[], int qtdProf);
+void dataNascimentoProfessor(Professor listaProfessor[], int indice);
+void ordenarDataNascimentoProfessor(Professor listaProfessor[], int qtdProf);
 
 #endif

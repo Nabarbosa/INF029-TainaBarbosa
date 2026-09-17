@@ -1,0 +1,16 @@
+## Atenção
+
+- Fazer uma criação de matricula automatica
+    Professor  
+    Aluno
+
+- Não deixar que duas matriculas iguais passem 
+    ex: matricula de professor não pode ser a mesma de que Aluno
+        mesma coisa para cpf
+
+- Fazer o modulo disciplina
+
+- Fazer a conexão de professor para uma disciplina
+
+- Fazer conexão de alunos para uma disciplina
+
