@@ -57,7 +57,7 @@ int main(void) {
                         }
                         case 1:{
                             printf("\n====== Cadastar Alunos ======\n");
-                            cadastrarAluno(listaAluno, &qtdAluno);
+                            cadastrarAluno(listaAluno, listaProfessor, &qtdProf, &qtdAluno);
                             break;
                         }
                         case 2:{
@@ -112,7 +112,7 @@ int main(void) {
                         }
                         case 1:{
                             printf("\n====== Cadastar Professores ======\n");
-                            cadastrarProfessor(listaProfessor, &qtdProf);
+                            cadastrarProfessor(listaProfessor, listaAluno, &qtdProf, &qtdAluno);
                             break;
                         }
                         case 2:{

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "aluno.h"
+#include "professor.h"
 #include "validacoes.h"
 
 // MENU DE ATUALIZAR //
@@ -57,7 +58,7 @@ void ordenarDataNascimento(Aluno listaAluno[], int qtdAluno){
 
 // CADASTRO DE ALUNO //
 
-void cadastrarAluno(Aluno listaAluno[], int *qtdAluno){
+void cadastrarAluno(Aluno listaAluno[], Professor listaProfessor[], int *qtdProf, int *qtdAluno){
     int matricula;
     char nomeAluno[MAX_NOME_PESSOAS];
     char buffer[50];
@@ -89,6 +90,21 @@ void cadastrarAluno(Aluno listaAluno[], int *qtdAluno){
 
         if(matriculaExiste){
             printf("Esta matrícula já está cadastrada! Tente outra.\n");
+            continue;
+        }
+
+        int matriculaExisteEmProfessor = 0;
+        for(int i = 0; i < *qtdAluno; i++){
+            for(int j = 0; j < *qtdProf; j++){
+                if(listaAluno[i].matricula == listaProfessor[j].matricula){
+                    matriculaExisteEmProfessor = 1;
+                    break;
+                }
+            }
+        }
+
+        if(matriculaExisteEmProfessor){
+            printf("Esta matrícula já está cadastrada em professor! Tente outra.\n");
             continue;
         }
 
@@ -126,6 +142,21 @@ void cadastrarAluno(Aluno listaAluno[], int *qtdAluno){
 
         if(cpfExiste){
             printf("O CPF digitado já existe em um cadastro!\n");
+            continue;
+        }
+
+        int cpfExisteEmProfessor = 0;
+        for(int i = 0; i < *qtdAluno; i++){
+            for(int j = 0; j < *qtdProf; j++){
+                if(listaAluno[i].cpf == listaProfessor[j].cpf){
+                    cpfExisteEmProfessor = 1;
+                    break;
+                }
+            }
+        }
+
+        if(cpfExisteEmProfessor){
+            printf("Este CPF já está cadastrada em professor! Tente outra.\n");
             continue;
         }
 

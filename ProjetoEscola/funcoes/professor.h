@@ -9,7 +9,7 @@ typedef struct{
     int ano;
 } DataNascimentoProfessor;
 
-typedef struct professor{
+typedef struct Professor{
     int matricula;
     char nome[MAX_NOME_PESSOAS];
     char sexo;
@@ -17,7 +17,7 @@ typedef struct professor{
     DataNascimentoProfessor dtNascimento;
 } Professor;
 
-void cadastrarProfessor(Professor listaProfessor[], int *qtdProf);
+void cadastrarProfessor(Professor listaProfessor[], Aluno listaAluno[], int *qtdProf, int *qtdAluno);
 void listarProfessores(Professor listaProfessor[], int qtdProf, int opcao);
 void atualizarProfessor(Professor listaProfessor[], int qtdProf);
 void excluirProfessor(Professor listaProfessor[], int *qtdProf);
