@@ -1,5 +1,5 @@
 #ifndef DISCIPLINA_H
-#include DISCIPLINA_H
+#define DISCIPLINA_H
 
 #include "validacoes.h"
 #include "aluno.h"

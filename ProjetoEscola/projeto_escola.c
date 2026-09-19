@@ -168,7 +168,7 @@ int main(void) {
                         }
                         case 1:{
                             printf("\n====== Cadastar Disciplina ======\n");
-                            cadastrarDisciplina(listaDisciplina, &qtdDisciplina, listaProfessor, qtdProfessor);
+                            cadastrarDisciplina(listaDisciplina, &qtdDisciplina, listaProfessor, qtdProf);
                             break;
                         }
                         case 2:{
@@ -177,7 +177,7 @@ int main(void) {
                             scanf("%d", &escolha);
 
                             printf("\n====== Listar Disciplinas ======\n");
-                            listarDisciplinas(listaDisciplina, qtdDisciplina, listaProfessor, qtdProf, listaAluno, qtdAluno);
+                            listarDisciplinas(listaDisciplina, qtdDisciplina, listaProfessor, qtdProf, listaAluno, qtdAluno, escolha);
                             break;
                         }
                         case 3:{

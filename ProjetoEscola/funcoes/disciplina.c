@@ -3,6 +3,8 @@
 // CADASTRAR DISCIPLINA //
 
 void cadastrarDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Professor listaProfessor[], int qtdProfessor){
+    char nomeMateria[MAX_NOME_MATERIA];
+    
     if(*qtdDisciplina == TAM_DISCIPLINA){
         printf("Lista de disciplina cheia!\n");
         return;
@@ -18,10 +20,9 @@ void cadastrarDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Profe
     }
 
     printf("Digite o nome da matéria: \n");
-    fgets(listaDisciplina[*qtdDisciplina].nomeDisciplina, MAX_NOME_MATERIA, stdin);
-    listaDisciplina[*qtdDisciplina].nomeDisciplina[
-        strcspn(listaDisciplina[*qtdDisciplina].nomeDisciplina, "\n")
-    ] = '\0';
+    getchar();
+    fgets(nomeMateria, sizeof(nomeMateria), stdin);
+    nomeMateria[strcspn(nomeMateria, "\n")] = '\0';
 
     printf("Informe a matricula do professor que irá lecionar a matéria: \n");
     int matriculaProf;
@@ -47,6 +48,7 @@ void cadastrarDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Profe
     scanf("%d", &listaDisciplina[*qtdDisciplina].qtdVagas);
 
     listaDisciplina[*qtdDisciplina].professor = listaProfessor[encontrou];
+    strcpy(listaDisciplina[*qtdDisciplina].nomeDisciplina, nomeMateria);
 
     (*qtdDisciplina)++;
 
@@ -139,7 +141,7 @@ void listarDisciplinas(Disciplina listaDisciplina[], int qtdDisciplina, Professo
         int contador = 1;
 
         for(int i = 0; i < qtdDisciplina; i++){
-            if(lista_disciplinas[i].vagas > 40){
+            if(listaDisciplina[i].qtdVagas > 40){
                 printf("\n====== Disciplina %d ======\n", contador);
                 printf("Codigo da disciplina: %d\n", copiaDisciplina[i].codigoDisciplina);
                 printf("Nome da disciplina: %s\n", copiaDisciplina[i].nomeDisciplina);
