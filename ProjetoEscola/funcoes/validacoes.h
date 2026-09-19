@@ -11,6 +11,8 @@
 #define TAM_PROFESSOR 3
 #define MAX_NOME_PESSOAS 256
 #define N_CPF 15 
+#define MAX_NOME_MATERIA 50
+#define MAX_ALUNOS 40
 
 
 int anoAtual();
