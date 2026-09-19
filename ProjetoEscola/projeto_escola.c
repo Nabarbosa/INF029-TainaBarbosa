@@ -181,13 +181,13 @@ int main(void) {
                             break;
                         }
                         case 3:{
-                            printf("\n====== Atualizar Professor(a) ======\n");
-                            atualizarProfessor(listaProfessor, qtdProf);
+                            printf("\n====== Inserir Aluno em Disciplina ======\n");
+                            cadastrarAlunoDisciplina(listaDisciplina, &qtdDisciplina, listaAluno, &qtdAluno);
                             break;
                         }
                         case 4:{
-                            printf("\n====== Excluir Professor(a) ======\n");
-                            excluirProfessor(listaProfessor, &qtdProf);
+                            printf("\n====== Excluir Aluno de Disciplina ======\n");
+                            excluirAlunoDisciplina(listaDisciplina, &qtdDisciplina, listaAluno, &qtdAluno);
                             break;
                         }
                         

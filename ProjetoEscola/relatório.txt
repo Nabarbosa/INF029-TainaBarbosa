@@ -1,8 +1,7 @@
 ## Atenção
 
-- Fazer o modulo disciplina
+- Fazer uma string para buscar pessoas, a partir de uma string, 
+o usuário informa 3 letras e deverá aparecer as pessoas que contenham aquelas três letras
 
-- Fazer a conexão de professor para uma disciplina
-
-- Fazer conexão de alunos para uma disciplina
+- Listar alunos matriculados em menos de três disciplinas
 
