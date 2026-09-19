@@ -94,17 +94,14 @@ void cadastrarAluno(Aluno listaAluno[], Professor listaProfessor[], int *qtdProf
         }
 
         int matriculaExisteEmProfessor = 0;
-        for(int i = 0; i < *qtdAluno; i++){
-            for(int j = 0; j < *qtdProf; j++){
-                if(listaAluno[i].matricula == listaProfessor[j].matricula){
-                    matriculaExisteEmProfessor = 1;
-                    break;
-                }
+        for(int i = 0; i < *qtdProf; i++){ 
+            if(listaProfessor[i].matricula == matricula){
+                matriculaExisteEmProfessor = 1;
+                break;
             }
         }
-
         if(matriculaExisteEmProfessor){
-            printf("Esta matrícula já está cadastrada em professor! Tente outra.\n");
+            printf("Esta matrícula já está cadastrada em um professor! Tente outra.\n");
             continue;
         }
 
@@ -146,17 +143,14 @@ void cadastrarAluno(Aluno listaAluno[], Professor listaProfessor[], int *qtdProf
         }
 
         int cpfExisteEmProfessor = 0;
-        for(int i = 0; i < *qtdAluno; i++){
-            for(int j = 0; j < *qtdProf; j++){
-                if(listaAluno[i].cpf == listaProfessor[j].cpf){
-                    cpfExisteEmProfessor = 1;
-                    break;
-                }
+        for(int i = 0; i < *qtdProf; i++){ 
+            if(strcmp(listaProfessor[i].cpf, cpf) == 0){ 
+                cpfExisteEmProfessor = 1;
+                break;
             }
         }
-
         if(cpfExisteEmProfessor){
-            printf("Este CPF já está cadastrada em professor! Tente outra.\n");
+            printf("Este CPF já está cadastrado em um professor! Tente outro.\n");
             continue;
         }
 
