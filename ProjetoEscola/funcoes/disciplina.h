@@ -15,5 +15,11 @@ typedef struct Disciplina{
     int qtdAlunos;
 } Disciplina;
 
+void cadastrarDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Professor listaProfessor[], int qtdProfessor);
+void listarDisciplinas(Disciplina listaDisciplina[], int qtdDisciplina, Professor listaProfessor[], int qtdProfessor, Aluno listaAluno[], int qtdAluno, int opcao);
+void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Aluno listaAluno[], int *qtdAluno);
+void excluirAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Aluno listaAluno[], int *qtdAluno);
+
+void menuListagemDisciplina();
 
 #endif

@@ -10,10 +10,11 @@ int main(void) {
 
     Aluno listaAluno[TAM_ALUNO] = {0};
     Professor listaProfessor[TAM_PROFESSOR] = {0};
-    // Disciplina listaDisciplina[TAM_DISCIPLINA] = {0};
+    Disciplina listaDisciplina[TAM_DISCIPLINA] = {0};
 
     int qtdAluno = 0;
     int qtdProf = 0;
+    int qtdDisciplina = 0;
 
     int opcao;
 
@@ -146,6 +147,56 @@ int main(void) {
 
             case 3:{
                 printf("\nMódulo Disciplina\n");
+
+                int sairDisciplina = 0;
+                int opcaoDisciplina;
+
+                while(!sairDisciplina){
+                    printf("\n======================================= \n");
+                    printf("\t0 - Voltar ao Menu\n");
+                    printf("\t1 - Cadastrar Disciplina\n");
+                    printf("\t2 - Listar Disciplinas\n");
+                    printf("\t3 - Cadastrar Aluno na Disciplina\n");
+                    printf("\t4 - Excluir Aluno da Disciplina\n");
+                    printf("======================================= \n");
+                    scanf("%d", &opcaoDisciplina);
+
+                    switch (opcaoDisciplina){
+                        case 0:{
+                            sairDisciplina = 1;
+                            break;
+                        }
+                        case 1:{
+                            printf("\n====== Cadastar Disciplina ======\n");
+                            cadastrarDisciplina(listaDisciplina, &qtdDisciplina, listaProfessor, qtdProfessor);
+                            break;
+                        }
+                        case 2:{
+                            menuListagemDisciplina();
+                            int escolha;
+                            scanf("%d", &escolha);
+
+                            printf("\n====== Listar Disciplinas ======\n");
+                            listarDisciplinas(listaDisciplina, qtdDisciplina, listaProfessor, qtdProf, listaAluno, qtdAluno);
+                            break;
+                        }
+                        case 3:{
+                            printf("\n====== Atualizar Professor(a) ======\n");
+                            atualizarProfessor(listaProfessor, qtdProf);
+                            break;
+                        }
+                        case 4:{
+                            printf("\n====== Excluir Professor(a) ======\n");
+                            excluirProfessor(listaProfessor, &qtdProf);
+                            break;
+                        }
+                        
+                        default:{
+                            printf("\nOpção Inválida!\n");
+                        }
+                    }
+                }
+
                 break;
             }
     
