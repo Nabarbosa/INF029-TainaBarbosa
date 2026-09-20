@@ -148,8 +148,16 @@ void listarDisciplinas(Disciplina listaDisciplina[], int qtdDisciplina, Professo
                 printf("Semestre da disciplina: %d\n", copiaDisciplina[i].semestre);
                 printf("Vagas da disciplina: %d\n", copiaDisciplina[i].qtdVagas);
                 printf("Professor(a) da disciplina: %s\n", copiaDisciplina[i].professor.nome);
+            } else {
+                printf("Não existe disciplinas que extrapolam 40 vagas!\n");
+                return;
             }
         }
+    }
+
+    else{
+        printf("Nehuma Disciplina Encontrada!\n");
+        return;
     }
 }
 
@@ -190,7 +198,7 @@ void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, 
 
     int encontrarAluno = -1;
     for(int i = 0; i < *qtdAluno; i++){
-        if(matricula_aluno == listaAluno[encontrarAluno].matricula){
+        if(matricula_aluno == listaAluno[i].matricula){
             encontrarAluno = i;
         }
     }
