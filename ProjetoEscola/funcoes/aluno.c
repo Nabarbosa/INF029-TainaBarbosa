@@ -2,6 +2,7 @@
 #include <string.h>
 #include "aluno.h"
 #include "professor.h"
+#include "disciplina.h"
 #include "validacoes.h"
 
 // MENU DE ATUALIZAR //
@@ -175,20 +176,26 @@ void menuListagemAlunos(){
     printf("3 - Listar alunos por sexo(Masculino / Feminino)\n");
     printf("4 - Listar alunos por data de nascimento\n");
     printf("5 - Exibir aniversariantes do mês\n");
+    printf("6 - Listar alunos matriculados em menos de três disciplinas\n");
 }
 
 // LISTAR ALUNO //
 
-void listarAlunos(Aluno listaAluno[], int qtdAluno, int opcao){
+void listarAlunos(Aluno listaAluno[], int qtdAluno, Disciplina listaDisciplina[], int qtdDisciplina, int opcao){
     if(qtdAluno == 0){
         printf("Lista de alunos vazia!\n");
         return;
     }
 
     Aluno copiaAluno[qtdAluno];
+    Disciplina copiaDisciplina[qtdDisciplina];
 
     for(int i = 0; i < qtdAluno; i++){
         copiaAluno[i] = listaAluno[i];
+    }
+
+    for(int i = 0; i < qtdDisciplina; i++){
+        copiaDisciplina[i] = listaDisciplina[i];
     }
 
     if(opcao == 1){
@@ -273,6 +280,19 @@ void listarAlunos(Aluno listaAluno[], int qtdAluno, int opcao){
             printf("Não há aniversariantes neste mês.\n");
         }
         return; 
+    }
+    else if(opcao == 6){
+        // Listar alunos cadastrados em menos de três disciplinas
+        for(int i = 0; i < qtdDisciplina; i++){
+            if(copiaDisciplina[i].qtdAlunos < 3){
+                int cont = 1
+                printf("--------------- Aluno: %d -------------\n", cont + 1);
+                printf("Nome do(a) Aluno(a): %s\n", copiaAluno[i].nome);
+                printf("Matrícula: %d\n", copiaAluno[i].matricula);
+                printf("CPF do(a) Aluno(a): %s\n", copiaAluno[i].cpf);
+                printf("--------------------------------------------\n");
+            }
+        }
     }
 
     for(int i = 0; i < qtdAluno; i++){

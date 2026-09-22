@@ -4,6 +4,7 @@
 #include "validacoes.h"
 
 typedef struct Professor Professor;
+typedef struct Disciplina Disciplina;
 
 typedef struct {
     int dia;

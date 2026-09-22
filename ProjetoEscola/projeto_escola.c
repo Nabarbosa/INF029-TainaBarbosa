@@ -207,3 +207,5 @@ int main(void) {
     }
     
 }
+
+void listarPessoasporNome();
