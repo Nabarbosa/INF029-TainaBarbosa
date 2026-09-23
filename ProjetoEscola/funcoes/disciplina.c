@@ -137,26 +137,29 @@ void listarDisciplinas(Disciplina listaDisciplina[], int qtdDisciplina, Professo
     }
 
     else if(opcao == 3){
-        // Extrapolam 40 vagas
-        int contador = 1;
+        // Disciplinas que extrapolam 40 vagas
 
-        for(int i = 0; i < qtdDisciplina; i++){
-            if(listaDisciplina[i].qtdVagas > 40){
+        int contador = 1;
+        int encontrou = 0;
+
+        for(int i = 0; i < *qtdDisciplina; i++){
+            if(copiaDisciplina[i].qtdVagas > 40){
                 printf("\n====== Disciplina %d ======\n", contador);
-                printf("Codigo da disciplina: %d\n", copiaDisciplina[i].codigoDisciplina);
-                printf("Nome da disciplina: %s\n", copiaDisciplina[i].nomeDisciplina);
-                printf("Semestre da disciplina: %d\n", copiaDisciplina[i].semestre);
-                printf("Vagas da disciplina: %d\n", copiaDisciplina[i].qtdVagas);
-                printf("Professor(a) da disciplina: %s\n", copiaDisciplina[i].professor.nome);
-            } else {
-                printf("Não existe disciplinas que extrapolam 40 vagas!\n");
-                return;
+                printf("Codigo da disciplina: %d\n",copiaDisciplina[i].codigoDisciplina);
+                printf("Nome da disciplina: %s\n",copiaDisciplina[i].nomeDisciplina);
+                printf("Semestre da disciplina: %d\n",copiaDisciplina[i].semestre);
+                printf("Vagas da disciplina: %d\n",copiaDisciplina[i].qtdVagas);
+                printf("Professor(a) da disciplina: %s\n",copiaDisciplina[i].professor.nome);
+
+                contador++;
+                encontrou = 1;
             }
         }
-    }
 
-    else{
-        printf("Nehuma Disciplina Encontrada!\n");
+        if(!encontrou){
+            printf("\nNão existem disciplinas que extrapolam 40 vagas!\n");
+        }
+
         return;
     }
 }

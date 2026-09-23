@@ -177,6 +177,7 @@ void menuListagemAlunos(){
     printf("4 - Listar alunos por data de nascimento\n");
     printf("5 - Exibir aniversariantes do mês\n");
     printf("6 - Listar alunos matriculados em menos de três disciplinas\n");
+    printf("7 - Buscar nome de aluno com o minimo 3 letras\n");
 }
 
 // LISTAR ALUNO //
@@ -281,18 +282,79 @@ void listarAlunos(Aluno listaAluno[], int qtdAluno, Disciplina listaDisciplina[]
         }
         return; 
     }
+
     else if(opcao == 6){
         // Listar alunos cadastrados em menos de três disciplinas
-        for(int i = 0; i < qtdDisciplina; i++){
-            if(copiaDisciplina[i].qtdAlunos < 3){
-                int cont = 1
-                printf("--------------- Aluno: %d -------------\n", cont + 1);
-                printf("Nome do(a) Aluno(a): %s\n", copiaAluno[i].nome);
+        int encontrou = 0;
+
+        printf("\n====== Alunos cadastrados em menos de 3 disciplinas ======\n");
+        for(int i = 0; i < *qtdAluno; i++){
+            int qtdDisciplinas = 0;
+            for(int j = 0; j < *qtdDisciplina; j++){
+                for(int k = 0; k < copiaDisciplina[j].qtdAlunos; k++){
+                    if(copiaDisciplina[j].aluno[k] != NULL &&
+                    copiaDisciplina[j].aluno[k].matricula == copiaAluno[i].matricula){
+                        qtdDisciplinas++;
+                        break;
+                    }
+                }
+            }
+
+            if(qtdDisciplinas < 3){
+
+                printf("--------------- Aluno -------------\n");
                 printf("Matrícula: %d\n", copiaAluno[i].matricula);
+                printf("Nome do(a) Aluno(a): %s\n", copiaAluno[i].nome);
                 printf("CPF do(a) Aluno(a): %s\n", copiaAluno[i].cpf);
-                printf("--------------------------------------------\n");
+                printf("Quantidade de disciplinas: %d\n", qtdDisciplinas);
+                printf("------------------------------------\n");
+
+                encontrou = 1;
             }
         }
+
+        if(!encontrou){
+            printf("Não existem alunos cadastrados em menos de 3 disciplinas.\n");
+        }
+
+        return;
+    }
+
+    else if(opcao == 7){
+        // Buscar aluno pelo nome
+
+        char busca[MAX_NOME_PESSOAS];
+        int encontrou = 0;
+
+        while(getchar() != '\n');
+
+        printf("\nDigite pelo menos 3 letras do nome: ");
+        fgets(busca, sizeof(busca), stdin);
+
+        busca[strcspn(busca, "\n")] = '\0';
+
+        if(strlen(busca) < 3){
+            printf("Digite pelo menos 3 letras!\n");
+            return;
+        }
+
+        printf("\n====== Alunos encontrados ======\n");
+        for(int i = 0; i < *qtdAluno; i++){
+            if(strstr(copiaAluno[i].nome, busca) != NULL){
+                printf("--------------- Aluno -------------\n");
+                printf("Matrícula: %d\n", copiaAluno[i].matricula);
+                printf("Nome do(a) Aluno(a): %s\n", copiaAluno[i].nome);
+                printf("CPF do(a) Aluno(a): %s\n", copiaAluno[i].cpf);
+                printf("--------------------------------------------\n");
+                encontrou = 1;
+            }
+        }
+
+        if(!encontrou){
+            printf("Nenhum aluno encontrado com essa busca.\n");
+        }
+
+        return;
     }
 
     for(int i = 0; i < qtdAluno; i++){

@@ -165,6 +165,7 @@ void menuListagemProfessor(){
     printf("3 - Listar professor por sexo(Masculino / Feminino)\n");
     printf("4 - Listar professor por data de nascimento\n");
     printf("5 - Exibir aniversariantes do mês\n");
+    printf("6 - Exibir aniversariantes do mês\n");
 }
 
 // MENU DE ATUALIZAR //
@@ -175,6 +176,37 @@ void menuAtualizarProfessor(){
     printf("2 - Atualizar cpf do professor(a)\n");
     printf("3 - Atualizar sexo do professor(a)\n");
     printf("4 - Atualizar aniversario do professor(a)\n");
+}
+
+// BUSCAR PROFESSOR MINIMO 3 LETRAS //
+
+void buscarProfessor(Professor listaProfessor[], int qtdProfessor) {
+
+    char buscaProfessor[MAX_NOME_PESSOAS];
+
+    printf("Digite no minimo 3 letras do nome: ");
+    fgets(buscaProfessor, sizeof(buscaProfessor), stdin);
+
+    buscaProfessor[strcspn(buscaProfessor, "\n")] = '\0';
+
+    if (strlen(buscaProfessor) < 3) {
+        printf("Digite pelo menos 3 letras!\n");
+        return;
+    }
+
+    printf("\n====== Professores encontrados ======\n");
+
+    for (int i = 0; i < qtdProfessor; i++) {
+
+        if (strstr(listaProfessor[i].nome, buscaProfessor) != NULL) {
+
+            printf("Matricula: %d\n", listaProfessor[i].matricula);
+            printf("Nome: %s\n", listaProfessor[i].nome);
+            printf("Sexo: %c\n", listaProfessor[i].sexo);
+            printf("CPF: %s\n", listaProfessor[i].cpf);
+            printf("\n");
+        }
+    }
 }
 
 // LISTAR PROFESSOR //
@@ -275,6 +307,43 @@ void listarProfessores(Professor listaProfessor[], int qtdProf, int opcao){
             printf("Não há aniversariantes neste mês.\n");
         }
         return; 
+    }
+
+    else if(opcao == 6){
+        // Encontrar professor por nome
+
+        char busca[MAX_NOME_PESSOAS];
+        int encontrou = 0;
+
+        while(getchar() != '\n');
+
+        printf("\nDigite pelo menos 3 letras do nome: ");
+        fgets(busca, sizeof(busca), stdin);
+
+        busca[strcspn(busca, "\n")] = '\0';
+
+        if(strlen(busca) < 3){
+            printf("Digite pelo menos 3 letras!\n");
+            return;
+        }
+
+        printf("\n====== Professores encontrados ======\n");
+        for(int i = 0; i < *qtdProf*; i++){
+            if(strstr(copiaProfessor[i].nome, busca) != NULL){
+                printf("--------------- Professor -------------\n");
+                printf("Matrícula: %d\n", copiaProfessor[i].matricula);
+                printf("Nome do(a) Professor(a): %s\n", copiaProfessor[i].nome);
+                printf("CPF do(a) Professor(a): %s\n", copiaProfessor[i].cpf);
+                printf("--------------------------------------------\n");
+                encontrou = 1;
+            }
+        }
+
+        if(!encontrou){
+            printf("Nenhum professor encontrado com essa busca.\n");
+        }
+
+        return;
     }
 
     for(int i = 0; i < qtdProf; i++){

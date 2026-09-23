@@ -1,7 +1,0 @@
-## Atenção
-
-- Fazer uma string para buscar pessoas, a partir de uma string, 
-o usuário informa 3 letras e deverá aparecer as pessoas que contenham aquelas três letras
-
-- Listar alunos matriculados em menos de três disciplinas
-

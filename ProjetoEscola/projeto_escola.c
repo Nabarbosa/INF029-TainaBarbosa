@@ -208,4 +208,6 @@ int main(void) {
     
 }
 
-void listarPessoasporNome();
+void listarPessoasporNome(Aluno listaAluno[], int qtdAluno, Professor listaProfessor[], int qtdProfessor){
+    
+}
