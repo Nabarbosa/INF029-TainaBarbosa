@@ -139,7 +139,7 @@ void cadastrarAluno(Aluno listaAluno[], Professor listaProfessor[], int *qtdProf
 
     printf("\nInforme o sexo do aluno(a) em formato M - Masculino | F - Feminino: \n");
     fgets(buffer, sizeof(buffer), stdin);
-    char sexoAluno = buffer[0];
+    char sexoAluno = toupper(buffer[0]);
 
     printf("\nInforme a data de nascimento do aluno(a) em formato D/MM/AAAA: \n");
     dataNascimento(listaAluno, *qtdAluno);

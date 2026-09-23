@@ -211,6 +211,21 @@ void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, A
         return;
     }
 
+    int alunoMatriculado = 0;
+    for(int i = 0; i < qtdDisciplina; i++){
+        for(int j = 0; j < qtdAluno; j++){
+            if(listaDisciplina[i].aluno[j].matricula == matricula_aluno){
+                alunoMatriculado = 1;
+                break;
+            }
+        }
+    }
+
+    if(alunoMatriculado){
+        printf("Esta matrícula já está cadastrada! Tente outra.\n");
+        return;
+    }
+
     int posicaoAluno = listaDisciplina[encontrarDisciplina].qtdAlunos;
     listaDisciplina[encontrarDisciplina].aluno[posicaoAluno] = listaAluno[encontrarAluno];
     listaDisciplina[encontrarDisciplina].qtdAlunos++;
