@@ -67,7 +67,7 @@ int main(void) {
                             scanf("%d", &escolha);
 
                             printf("\n====== Listar Alunos ======\n");
-                            listarAlunos(listaAluno, qtdAluno, escolha);
+                            listarAlunos(listaAluno, qtdAluno, listaDisciplina, qtdDisciplina, escolha);
                             break;
                         }
                         case 3:{
@@ -182,12 +182,12 @@ int main(void) {
                         }
                         case 3:{
                             printf("\n====== Inserir Aluno em Disciplina ======\n");
-                            cadastrarAlunoDisciplina(listaDisciplina, &qtdDisciplina, listaAluno, &qtdAluno);
+                            cadastrarAlunoDisciplina(listaDisciplina, qtdDisciplina, listaAluno, qtdAluno);
                             break;
                         }
                         case 4:{
                             printf("\n====== Excluir Aluno de Disciplina ======\n");
-                            excluirAlunoDisciplina(listaDisciplina, &qtdDisciplina, listaAluno, &qtdAluno);
+                            excluirAlunoDisciplina(listaDisciplina, qtdDisciplina, listaAluno, qtdAluno);
                             break;
                         }
                         
@@ -205,9 +205,5 @@ int main(void) {
             }
         }
     }
-    
-}
-
-void listarPessoasporNome(Aluno listaAluno[], int qtdAluno, Professor listaProfessor[], int qtdProfessor){
     
 }

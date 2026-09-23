@@ -15,9 +15,9 @@
 #define MAX_ALUNOS 40
 
 
-int anoAtual();
-int mesAtual();
 int validarData(int dia, int mes, int ano);
+int mesAtual();
+int anoAtual();
 
 int validarCpf(char cpf[]);
 

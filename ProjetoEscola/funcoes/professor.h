@@ -3,14 +3,15 @@
 
 #include "validacoes.h"
 
-typedef struct Aluno Aluno;
-typedef struct Professor Professor;
 
 typedef struct{
     int dia;
     int mes;
     int ano;
 } DataNascimentoProfessor;
+
+typedef struct Aluno Aluno;
+typedef struct Professor Professor;
 
 typedef struct Professor{
     int matricula;

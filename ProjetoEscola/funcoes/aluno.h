@@ -3,10 +3,7 @@
 
 #include "validacoes.h"
 
-typedef struct Professor Professor;
-typedef struct Disciplina Disciplina;
-
-typedef struct {
+typedef struct{
     int dia;
     int mes;
     int ano;
@@ -20,15 +17,18 @@ typedef struct Aluno{
     DataNascimento dtNascimento;
 } Aluno;
 
-void cadastrarAluno(Aluno *listaAluno, Professor *listaProfessor, int *qtdProf, int *qtdAluno);
-void listarAlunos(Aluno listaAluno[], int qtdAluno, int opcao);
+typedef struct Professor Professor;
+typedef struct Disciplina Disciplina;
+
+void cadastrarAluno(Aluno listaAluno[], Professor *listaProfessor, int *qtdProf, int *qtdAluno);
+void listarAlunos(Aluno listaAluno[], int qtdAluno, Disciplina *listaDisciplina, int qtdDisciplina, int opcao);
 void atualizarAluno(Aluno listaAluno[], int qtdAluno);
-void excluirAluno(Aluno *listaAluno, int *qtdAluno);
+void excluirAluno(Aluno listaAluno[], int *qtdAluno);
 
 void menuListagemAlunos();
 void menuAtualizarAlunos();
 
-void dataNascimento(Aluno lista_aluno[], int indice);
+void dataNascimento(Aluno listaAluno[], int indice);
 void ordenarDataNascimento(Aluno listaAluno[], int qtdAluno);
 
 #endif

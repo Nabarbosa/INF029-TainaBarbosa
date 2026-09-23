@@ -142,7 +142,7 @@ void listarDisciplinas(Disciplina listaDisciplina[], int qtdDisciplina, Professo
         int contador = 1;
         int encontrou = 0;
 
-        for(int i = 0; i < *qtdDisciplina; i++){
+        for(int i = 0; i < qtdDisciplina; i++){
             if(copiaDisciplina[i].qtdVagas > 40){
                 printf("\n====== Disciplina %d ======\n", contador);
                 printf("Codigo da disciplina: %d\n",copiaDisciplina[i].codigoDisciplina);
@@ -166,7 +166,7 @@ void listarDisciplinas(Disciplina listaDisciplina[], int qtdDisciplina, Professo
 
 // INSERIR ALUNOS NA MATÉRIA //
 
-void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Aluno listaAluno[], int *qtdAluno){
+void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Aluno listaAluno[], int qtdAluno){
     printf("\n====== Cadastrar Aluno em uma Disciplina ======\n");
     printf("Informe o codigo da disciplina que deseja cadastrar o aluno: \n");
     int cod_disciplina = 0;
@@ -178,7 +178,7 @@ void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, 
     }
 
     int encontrarDisciplina = -1;
-    for(int i = 0; i < *qtdDisciplina; i++){
+    for(int i = 0; i < qtdDisciplina; i++){
         if(cod_disciplina == listaDisciplina[i].codigoDisciplina){
             encontrarDisciplina = i;
             break;
@@ -200,7 +200,7 @@ void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, 
     scanf("%d", &matricula_aluno);
 
     int encontrarAluno = -1;
-    for(int i = 0; i < *qtdAluno; i++){
+    for(int i = 0; i < qtdAluno; i++){
         if(matricula_aluno == listaAluno[i].matricula){
             encontrarAluno = i;
         }
@@ -212,8 +212,6 @@ void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, 
     }
 
     int posicaoAluno = listaDisciplina[encontrarDisciplina].qtdAlunos;
-
-    listaDisciplina[*qtdDisciplina].codigoDisciplina = cod_disciplina;
     listaDisciplina[encontrarDisciplina].aluno[posicaoAluno] = listaAluno[encontrarAluno];
     listaDisciplina[encontrarDisciplina].qtdAlunos++;
 
@@ -222,7 +220,7 @@ void cadastrarAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, 
 
 // EXCLUIR ALUNO DA DISCIPLINA //
 
-void excluirAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Aluno listaAluno[], int *qtdAluno){
+void excluirAlunoDisciplina(Disciplina listaDisciplina[], int qtdDisciplina, Aluno listaAluno[], int qtdAluno){
     printf("\n====== Excluir Aluno em uma Disciplina ======\n");
     printf("\nDigite o codigo da disciplina: \n");
     int codigo_disciplina = 0;
@@ -234,7 +232,7 @@ void excluirAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Al
     }
 
     int encontrou_disciplina = -1;
-    for(int i = 0; i < *qtdDisciplina; i++){
+    for(int i = 0; i < qtdDisciplina; i++){
         if(codigo_disciplina == listaDisciplina[i].codigoDisciplina){
             encontrou_disciplina = i;
             break;
@@ -251,7 +249,7 @@ void excluirAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Al
     scanf("%d", &matricula); 
 
     int encontrar_aluno = -1;
-    for(int i = 0; i < *qtdAluno; i++){
+    for(int i = 0; i < qtdAluno; i++){
         if(matricula == listaAluno[i].matricula){
             encontrar_aluno = i;
             break;
@@ -265,7 +263,7 @@ void excluirAlunoDisciplina(Disciplina listaDisciplina[], int *qtdDisciplina, Al
 
     int achou_aluno_disciplina = -1;
     for(int i = 0; i < listaDisciplina[encontrou_disciplina].qtdAlunos; i++){
-        if(listaDisciplina[encontrou_disciplina].aluno[i].matricula = matricula){
+        if(listaDisciplina[encontrou_disciplina].aluno[i].matricula == matricula){
             achou_aluno_disciplina = i;
             break;
         }

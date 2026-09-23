@@ -178,37 +178,6 @@ void menuAtualizarProfessor(){
     printf("4 - Atualizar aniversario do professor(a)\n");
 }
 
-// BUSCAR PROFESSOR MINIMO 3 LETRAS //
-
-void buscarProfessor(Professor listaProfessor[], int qtdProfessor) {
-
-    char buscaProfessor[MAX_NOME_PESSOAS];
-
-    printf("Digite no minimo 3 letras do nome: ");
-    fgets(buscaProfessor, sizeof(buscaProfessor), stdin);
-
-    buscaProfessor[strcspn(buscaProfessor, "\n")] = '\0';
-
-    if (strlen(buscaProfessor) < 3) {
-        printf("Digite pelo menos 3 letras!\n");
-        return;
-    }
-
-    printf("\n====== Professores encontrados ======\n");
-
-    for (int i = 0; i < qtdProfessor; i++) {
-
-        if (strstr(listaProfessor[i].nome, buscaProfessor) != NULL) {
-
-            printf("Matricula: %d\n", listaProfessor[i].matricula);
-            printf("Nome: %s\n", listaProfessor[i].nome);
-            printf("Sexo: %c\n", listaProfessor[i].sexo);
-            printf("CPF: %s\n", listaProfessor[i].cpf);
-            printf("\n");
-        }
-    }
-}
-
 // LISTAR PROFESSOR //
 
 void listarProfessores(Professor listaProfessor[], int qtdProf, int opcao){
@@ -328,7 +297,7 @@ void listarProfessores(Professor listaProfessor[], int qtdProf, int opcao){
         }
 
         printf("\n====== Professores encontrados ======\n");
-        for(int i = 0; i < *qtdProf*; i++){
+        for(int i = 0; i < qtdProf; i++){
             if(strstr(copiaProfessor[i].nome, busca) != NULL){
                 printf("--------------- Professor -------------\n");
                 printf("Matrícula: %d\n", copiaProfessor[i].matricula);
